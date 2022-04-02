@@ -7,9 +7,11 @@ namespace DSSL.Blog.Posts
     {
         public string Title { get; set; }
         public DateTime? PublishDate { get; set; }
-        public Guid AuthorId { get; }
+        public Guid AuthorId { get; init; }
         public bool IsPublished => PublishDate.HasValue;
         public string HeaderImage { get; set; }
         public string Tags { get; set; }
+
+        internal Post(Guid id) : base(id) { }
     }
 }

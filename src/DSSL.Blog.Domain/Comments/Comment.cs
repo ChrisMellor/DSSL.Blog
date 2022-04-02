@@ -7,5 +7,7 @@ namespace DSSL.Blog.Comments
     {
         public string Message { get; set; }
         public Guid PostId { get; set; }
+
+        internal Comment(Guid id) : base(id) { }
     }
 }

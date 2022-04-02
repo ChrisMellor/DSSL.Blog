@@ -84,11 +84,6 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
             b.ConfigureByConvention();
 
-            b.Property(x => x.Name)
-                .IsRequired();
-
-            b.HasIndex(x => x.Name);
-
             b.HasOne<IdentityUser>()
                 .WithMany()
                 .HasForeignKey(x => x.UserId)
@@ -118,17 +113,14 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
             b.ConfigureByConvention();
 
-            b.Property(x => x.PostId)
-                .IsRequired();
-
             b.Property(x => x.Message)
                 .IsRequired();
 
             b.HasIndex(x => x.Id);
 
-            b.HasMany<Post>()
-                .WithOne()
-                .HasForeignKey(x => x.Id);
+            b.HasOne<Post>()
+                .WithMany()
+                .HasForeignKey(x => x.PostId);
         });
     }
 }
