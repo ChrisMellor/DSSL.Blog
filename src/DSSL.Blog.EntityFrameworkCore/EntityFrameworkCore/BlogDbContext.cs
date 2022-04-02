@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DSSL.Blog.Authors;
+using DSSL.Blog.Comments;
+using DSSL.Blog.Posts;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -18,12 +22,12 @@ namespace DSSL.Blog.EntityFrameworkCore;
 [ReplaceDbContext(typeof(IIdentityDbContext))]
 [ReplaceDbContext(typeof(ITenantManagementDbContext))]
 [ConnectionStringName("Default")]
-public class BlogDbContext :
-    AbpDbContext<BlogDbContext>,
-    IIdentityDbContext,
-    ITenantManagementDbContext
+public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Comment> Comments { get; set; }
 
     #region Entities from the modules
 
@@ -52,8 +56,7 @@ public class BlogDbContext :
 
     #endregion
 
-    public BlogDbContext(DbContextOptions<BlogDbContext> options)
-        : base(options)
+    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
     {
 
     }
@@ -75,11 +78,57 @@ public class BlogDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(BlogConsts.DbTablePrefix + "YourEntities", BlogConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Author>(b =>
+        {
+            b.ToTable(BlogConsts.DbTablePrefix + nameof(Author), BlogConsts.DbSchema);
+
+            b.ConfigureByConvention();
+
+            b.Property(x => x.Name)
+                .IsRequired();
+
+            b.HasIndex(x => x.Name);
+
+            b.HasOne<IdentityUser>()
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .IsRequired();
+        });
+
+        builder.Entity<Post>(b =>
+        {
+            b.ToTable(BlogConsts.DbTablePrefix + nameof(Post), BlogConsts.DbSchema);
+
+            b.ConfigureByConvention();
+
+            b.Property(x => x.Title)
+                .IsRequired();
+
+            b.HasIndex(x => x.Id);
+
+            b.HasOne<Author>()
+                .WithMany()
+                .HasForeignKey(x => x.AuthorId)
+                .IsRequired();
+        });
+
+        builder.Entity<Comment>(b =>
+        {
+            b.ToTable(BlogConsts.DbTablePrefix + nameof(Comment), BlogConsts.DbSchema);
+
+            b.ConfigureByConvention();
+
+            b.Property(x => x.PostId)
+                .IsRequired();
+
+            b.Property(x => x.Message)
+                .IsRequired();
+
+            b.HasIndex(x => x.Id);
+
+            b.HasMany<Post>()
+                .WithOne()
+                .HasForeignKey(x => x.Id);
+        });
     }
 }

@@ -1,8 +1,9 @@
-﻿namespace DSSL.Blog;
-
-public static class BlogConsts
+﻿namespace DSSL.Blog
 {
-    public const string DbTablePrefix = "App";
+    public static class BlogConsts
+    {
+        public const string DbTablePrefix = "Blog";
 
-    public const string DbSchema = null;
+        public const string DbSchema = null;
+    }
 }
