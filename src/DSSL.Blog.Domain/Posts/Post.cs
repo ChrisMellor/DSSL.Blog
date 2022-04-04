@@ -12,6 +12,8 @@ namespace DSSL.Blog.Posts
         public string HeaderImage { get; set; }
         public string Tags { get; set; }
 
+        private Post() { }
         internal Post(Guid id) : base(id) { }
+
     }
 }

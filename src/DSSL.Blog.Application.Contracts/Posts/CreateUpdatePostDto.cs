@@ -1,9 +1,8 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
 
 namespace DSSL.Blog.Posts
 {
-    public class PostDto : AuditedEntityDto<Guid>
+    public class CreateUpdatePostDto
     {
         public string Title { get; set; }
 
@@ -11,8 +10,6 @@ namespace DSSL.Blog.Posts
 
         public string Tags { get; set; }
 
-        public bool IsPublished { get; set; }
-
-        public Guid AuthorId { get; set; }
+        public DateTime? PublishDate { get; set; }
     }
 }
