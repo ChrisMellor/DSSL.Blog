@@ -2,16 +2,16 @@ using DSSL.Blog.Posts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web.Pages
+namespace DSSL.Blog.Web.Pages.Posts
 {
     public class CreateModalModel : BlogPageModel
     {
         [BindProperty]
         public CreateUpdatePostDto Post { get; set; }
 
-        private readonly IPostAppService _postAppService;
+        private readonly PostAppService _postAppService;
 
-        public CreateModalModel(IPostAppService postAppService)
+        public CreateModalModel(PostAppService postAppService)
         {
             _postAppService = postAppService;
         }
