@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web.Pages
+namespace DSSL.Blog.Web.Pages.Posts
 {
     public class EditModalModel : BlogPageModel
     {
@@ -14,9 +14,9 @@ namespace DSSL.Blog.Web.Pages
         [BindProperty]
         public CreateUpdatePostDto Post { get; set; }
 
-        private readonly IPostAppService _postAppService;
+        private readonly PostAppService _postAppService;
 
-        public EditModalModel(IPostAppService postAppService)
+        public EditModalModel(PostAppService postAppService)
         {
             _postAppService = postAppService;
         }
