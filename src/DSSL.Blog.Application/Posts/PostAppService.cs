@@ -1,16 +1,39 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
 namespace DSSL.Blog.Posts
 {
-    public class PostAppService : CrudAppService<Post, PostDto, Guid, PagedAndSortedResultRequestDto, CreateUpdatePostDto>, IPostAppService
+    public class PostAppService : ApplicationService, IPostAppService
     {
-        public PostAppService(IRepository<Post, Guid> repository) : base(repository)
-        {
+        private readonly IRepository<Post, Guid> _postRepository;
+        private readonly PostManager _postManager;
 
+        public PostAppService(IRepository<Post, Guid> postRepository, PostManager postManager)
+        {
+            _postRepository = postRepository;
+            _postManager = postManager;
         }
 
+        public async Task<PostDto> CreateAsync(PostCreateDto input)
+        {
+            var post = await _postManager.CreateAsync(input.Title, input.HeaderImage, input.IsPublished, input.Tags);
+
+            await _postRepository.InsertAsync(post);
+
+            return ObjectMapper.Map<Post, PostDto>(post);
+        }
+
+        public async Task<PostDto> UpdateAsync(Guid id, PostDto input)
+        {
+            var post = await _postRepository.GetAsync(id);
+
+            await _postManager.ChangeTitleAsync(post, input.Title);
+
+            await _postRepository.UpdateAsync(post);
+
+            return ObjectMapper.Map<Post, PostDto>(post);
+        }
     }
 }
