@@ -1,5 +1,4 @@
-﻿using DSSL.Blog.Authors;
-using DSSL.Blog.Comments;
+﻿using DSSL.Blog.Comments;
 using DSSL.Blog.Posts;
 using System;
 using System.Collections.Generic;
@@ -15,33 +14,22 @@ namespace DSSL.Blog
 {
     public class BlogDataSeederContributor : IDataSeedContributor, ITransientDependency
     {
-        private readonly IRepository<Author, Guid> _authorRepository;
         private readonly IRepository<Post, Guid> _postRepository;
         private readonly IRepository<Comment, Guid> _commentRepository;
-        private readonly AuthorManager _authorManager;
         private readonly IRepository<IdentityUser, Guid> _userRepository;
         private readonly IGuidGenerator _guidGenerator;
 
-        public BlogDataSeederContributor(IRepository<Author, Guid> authorRepository, IRepository<Post, Guid> postRepository, IRepository<Comment, Guid> commentRepository, AuthorManager authorManager, IRepository<IdentityUser, Guid> userRepository, IGuidGenerator guidGenerator)
+        public BlogDataSeederContributor(IRepository<Post, Guid> postRepository, IRepository<Comment, Guid> commentRepository, IRepository<IdentityUser, Guid> userRepository, IGuidGenerator guidGenerator)
         {
-            _authorRepository = authorRepository;
             _postRepository = postRepository;
             _commentRepository = commentRepository;
-            _authorManager = authorManager;
             _userRepository = userRepository;
             _guidGenerator = guidGenerator;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            var authorCount = await _authorRepository.GetCountAsync();
-
-            if (authorCount > 0)
-            {
-                return;
-            }
-
-            var author = await CreateAuthorAsync();
+            var author = await _userRepository.FirstOrDefaultAsync();
             var posts = await CreatePostsAsync(author.Id);
 
             foreach (var post in posts)
@@ -120,15 +108,6 @@ namespace DSSL.Blog
             return posts;
         }
 
-        private async Task<Author> CreateAuthorAsync()
-        {
-            var user = await _userRepository.FirstOrDefaultAsync();
-            var author = await _authorManager.CreateAsync(user.Id);
-            await _authorRepository.InsertAsync(author);
-
-            return author;
-        }
-
         private static string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)
         {
 
@@ -136,22 +115,22 @@ namespace DSSL.Blog
                 "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod",
                 "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat"};
 
-            var rand = new Random();
-            int numSentences = rand.Next(maxSentences - minSentences)
+            var random = new Random();
+            var sentences = random.Next(maxSentences - minSentences)
                                + minSentences + 1;
-            int numWords = rand.Next(maxWords - minWords) + minWords + 1;
+            var wordIndex = random.Next(maxWords - minWords) + minWords + 1;
 
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
 
-            for (int p = 0; p < numParagraphs; p++)
+            for (var p = 0; p < numParagraphs; p++)
             {
                 result.Append("<p>");
-                for (int s = 0; s < numSentences; s++)
+                for (var s = 0; s < sentences; s++)
                 {
-                    for (int w = 0; w < numWords; w++)
+                    for (var w = 0; w < wordIndex; w++)
                     {
-                        if (w > 0) { result.Append(" "); }
-                        result.Append(words[rand.Next(words.Length)]);
+                        if (w > 0) { result.Append(' '); }
+                        result.Append(words[random.Next(words.Length)]);
                     }
                     result.Append(". ");
                 }
