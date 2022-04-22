@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Domain.Services;
 using Volo.Abp.Users;
 
@@ -10,7 +9,7 @@ namespace DSSL.Blog.Posts
     {
         private readonly ICurrentUser _currentUser;
 
-        public PostManager(IRepository<Post> postRepository, ICurrentUser currentUser)
+        public PostManager(ICurrentUser currentUser)
         {
             _currentUser = currentUser;
         }
@@ -30,6 +29,32 @@ namespace DSSL.Blog.Posts
             }
 
             post.SetTitle(title);
+        }
+
+        public async Task LikeAsync(Post post, bool isLiked)
+        {
+            if (isLiked)
+            {
+                post.Liked();
+            }
+        }
+
+        public async Task PublishAsync(Post post, bool isPublished)
+        {
+            if (isPublished)
+            {
+                post.Publish();
+            }
+        }
+
+        public async Task ChangeHeaderImageAsync(Post post, string headerImage)
+        {
+            if (post.HeaderImage == headerImage)
+            {
+                return;
+            }
+
+            post.SetHeaderImage(headerImage);
         }
     }
 }

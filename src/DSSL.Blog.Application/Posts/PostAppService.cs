@@ -30,6 +30,9 @@ namespace DSSL.Blog.Posts
             var post = await _postRepository.GetAsync(id);
 
             await _postManager.ChangeTitleAsync(post, input.Title);
+            await _postManager.PublishAsync(post, input.IsPublished);
+            await _postManager.ChangeHeaderImageAsync(post, input.HeaderImage);
+            await _postManager.LikeAsync(post, true);
 
             await _postRepository.UpdateAsync(post);
 
@@ -38,7 +41,9 @@ namespace DSSL.Blog.Posts
 
         public async Task<PostDto> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var post = await _postRepository.GetAsync(id);
+
+            return ObjectMapper.Map<Post, PostDto>(post);
         }
     }
 }
