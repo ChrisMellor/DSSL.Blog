@@ -1,7 +1,9 @@
-﻿using DSSL.Blog.Authors;
-using DSSL.Blog.Comments;
+﻿using DSSL.Blog.Comments;
 using DSSL.Blog.Posts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
+using System.Collections.Generic;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -25,7 +27,6 @@ namespace DSSL.Blog.EntityFrameworkCore;
 public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
-    public DbSet<Author> Authors { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<Comment> Comments { get; set; }
 
@@ -78,18 +79,6 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
         /* Configure your own tables/entities inside here */
 
-        builder.Entity<Author>(b =>
-        {
-            b.ToTable(BlogConsts.DbTablePrefix + nameof(Author), BlogConsts.DbSchema);
-
-            b.ConfigureByConvention();
-
-            b.HasOne<IdentityUser>()
-                .WithMany()
-                .HasForeignKey(x => x.UserId)
-                .IsRequired();
-        });
-
         builder.Entity<Post>(b =>
         {
             b.ToTable(BlogConsts.DbTablePrefix + nameof(Post), BlogConsts.DbSchema);
@@ -101,10 +90,15 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
             b.HasIndex(x => x.Id);
 
-            b.HasOne<Author>()
+            b.HasOne<IdentityUser>()
                 .WithMany()
                 .HasForeignKey(x => x.AuthorId)
                 .IsRequired();
+
+            b.Property(x => x.Tags)
+                .HasConversion(new ValueConverter<ICollection<string>, string>(
+                    x => string.Join(";", x),
+                    x => x.Split(';', StringSplitOptions.RemoveEmptyEntries)));
         });
 
         builder.Entity<Comment>(b =>

@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace DSSL.Blog.Posts
 {
-    public class PostAppService : ApplicationService, IPostAppService
+    public class PostAppService : ApplicationService
     {
         private readonly IRepository<Post, Guid> _postRepository;
         private readonly PostManager _postManager;
@@ -34,6 +34,11 @@ namespace DSSL.Blog.Posts
             await _postRepository.UpdateAsync(post);
 
             return ObjectMapper.Map<Post, PostDto>(post);
+        }
+
+        public async Task<PostDto> GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
