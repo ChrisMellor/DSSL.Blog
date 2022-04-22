@@ -96,9 +96,7 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
                 .IsRequired();
 
             b.Property(x => x.Tags)
-                .HasConversion(new ValueConverter<ICollection<string>, string>(
-                    x => string.Join(";", x),
-                    x => x.Split(';', StringSplitOptions.RemoveEmptyEntries)));
+                .HasConversion(CollectionConverter());
         });
 
         builder.Entity<Comment>(b =>
@@ -116,5 +114,12 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
                 .WithMany()
                 .HasForeignKey(x => x.PostId);
         });
+    }
+
+    private static ValueConverter<ICollection<string>, string> CollectionConverter()
+    {
+        return new ValueConverter<ICollection<string>, string>(
+            x => string.Join(";", x),
+            x => x.Split(';', StringSplitOptions.RemoveEmptyEntries));
     }
 }
