@@ -1,15 +1,11 @@
 ﻿using DSSL.Blog.Comments;
 using DSSL.Blog.Posts;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System;
-using System.Collections.Generic;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -79,47 +75,7 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
         /* Configure your own tables/entities inside here */
 
-        builder.Entity<Post>(b =>
-        {
-            b.ToTable(BlogConsts.DbTablePrefix + nameof(Post), BlogConsts.DbSchema);
-
-            b.ConfigureByConvention();
-
-            b.Property(x => x.Title)
-                .IsRequired();
-
-            b.HasIndex(x => x.Id);
-
-            b.HasOne<IdentityUser>()
-                .WithMany()
-                .HasForeignKey(x => x.AuthorId)
-                .IsRequired();
-
-            b.Property(x => x.Tags)
-                .HasConversion(CollectionConverter());
-        });
-
-        builder.Entity<Comment>(b =>
-        {
-            b.ToTable(BlogConsts.DbTablePrefix + nameof(Comment), BlogConsts.DbSchema);
-
-            b.ConfigureByConvention();
-
-            b.Property(x => x.Message)
-                .IsRequired();
-
-            b.HasIndex(x => x.Id);
-
-            b.HasOne<Post>()
-                .WithMany()
-                .HasForeignKey(x => x.PostId);
-        });
-    }
-
-    private static ValueConverter<ICollection<string>, string> CollectionConverter()
-    {
-        return new ValueConverter<ICollection<string>, string>(
-            x => string.Join(";", x),
-            x => x.Split(';', StringSplitOptions.RemoveEmptyEntries));
+        builder.ConfigurePost();
+        builder.ConfigureComment();
     }
 }

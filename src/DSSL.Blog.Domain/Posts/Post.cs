@@ -12,7 +12,6 @@ namespace DSSL.Blog.Posts
         public Guid AuthorId { get; init; }
         public string Title { get; private set; }
         public string HeaderImage { get; private set; }
-        public int LikesCount { get; private set; }
         public DateTime? PublishDate { get; private set; }
         public bool IsPublished => PublishDate.HasValue;
 
@@ -45,11 +44,6 @@ namespace DSSL.Blog.Posts
         internal void SetHeaderImage(string headerImage)
         {
             HeaderImage = Check.NotNullOrWhiteSpace(headerImage, nameof(headerImage));
-        }
-
-        internal void Liked()
-        {
-            LikesCount += 1;
         }
 
         internal void Publish()
