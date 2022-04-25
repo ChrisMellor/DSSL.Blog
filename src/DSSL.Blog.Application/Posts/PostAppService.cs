@@ -41,9 +41,18 @@ namespace DSSL.Blog.Posts
 
         public async Task<PostDto> GetAsync(Guid id)
         {
-            var post = await _postRepository.GetAsync(id);
+            try
+            {
+                var post = await _postRepository.GetAsync(id);
 
-            return ObjectMapper.Map<Post, PostDto>(post);
+                var destination = new PostDto();
+                var postDto = ObjectMapper.Map<Post, PostDto>(post, destination);
+                return postDto;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

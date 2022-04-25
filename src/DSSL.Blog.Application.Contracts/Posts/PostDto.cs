@@ -3,7 +3,8 @@ using Volo.Abp.Application.Dtos;
 
 namespace DSSL.Blog.Posts
 {
-    public class PostDto : AuditedEntityDto<Guid>
+    [Serializable]
+    public class PostDto : ExtensibleAuditedEntityDto<Guid>
     {
         public string Title { get; set; }
 
