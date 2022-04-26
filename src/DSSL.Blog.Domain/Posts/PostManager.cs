@@ -31,14 +31,6 @@ namespace DSSL.Blog.Posts
             post.SetTitle(title);
         }
 
-        public async Task LikeAsync(Post post, bool isLiked)
-        {
-            if (isLiked)
-            {
-                post.Liked();
-            }
-        }
-
         public async Task PublishAsync(Post post, bool isPublished)
         {
             if (isPublished)

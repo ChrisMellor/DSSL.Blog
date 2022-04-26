@@ -32,7 +32,6 @@ namespace DSSL.Blog.Posts
             await _postManager.ChangeTitleAsync(post, input.Title);
             await _postManager.PublishAsync(post, input.IsPublished);
             await _postManager.ChangeHeaderImageAsync(post, input.HeaderImage);
-            await _postManager.LikeAsync(post, true);
 
             await _postRepository.UpdateAsync(post);
 
