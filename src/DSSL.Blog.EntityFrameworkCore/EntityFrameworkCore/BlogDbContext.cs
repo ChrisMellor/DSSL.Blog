@@ -57,10 +57,7 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
     #endregion
 
-    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
-    {
-
-    }
+    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -89,11 +86,6 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
                 .IsRequired();
 
             b.HasIndex(x => x.Id);
-
-            b.HasOne<IdentityUser>()
-                .WithMany()
-                .HasForeignKey(x => x.AuthorId)
-                .IsRequired();
 
             b.Property(x => x.Tags)
                 .HasConversion(CollectionConverter());

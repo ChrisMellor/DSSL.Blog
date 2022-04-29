@@ -9,7 +9,6 @@ namespace DSSL.Blog.Posts
 {
     public class Post : AuditedAggregateRoot<Guid>
     {
-        public Guid AuthorId { get; init; }
         public string Title { get; private set; }
         public string HeaderImage { get; private set; }
         public DateTime? PublishDate { get; private set; }
@@ -19,13 +18,11 @@ namespace DSSL.Blog.Posts
 
         public Post(
             Guid id,
-            Guid authorId,
             string title,
             string headerImage,
             bool isPublished,
             ICollection<string> tags) : base(id)
         {
-            AuthorId = authorId;
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));
             HeaderImage = headerImage;
             PublishDate = isPublished ? DateTime.UtcNow : null;
