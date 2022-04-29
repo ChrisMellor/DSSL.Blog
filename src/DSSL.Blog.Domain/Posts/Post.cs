@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Volo.Abp;
-using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace DSSL.Blog.Posts
 {
-    public class Post : AggregateRoot<Guid>
+    public class Post : AuditedAggregateRoot<Guid>
     {
         public Guid AuthorId { get; init; }
         public string Title { get; private set; }

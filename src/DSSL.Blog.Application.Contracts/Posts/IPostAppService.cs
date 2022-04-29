@@ -2,8 +2,5 @@
 
 namespace DSSL.Blog.Posts
 {
-    public interface IPostAppService : IApplicationService
-    {
-
-    }
+    public interface IPostAppService : IApplicationService { }
 }

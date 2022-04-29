@@ -7,6 +7,6 @@ public class BlogWebAutoMapperProfile : Profile
 {
     public BlogWebAutoMapperProfile()
     {
-        CreateMap<PostDto, CreateUpdatePostDto>();
+        CreateMap<PostDto, PostUpdateDto>();
     }
 }

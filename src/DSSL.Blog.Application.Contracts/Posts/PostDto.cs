@@ -1,19 +1,18 @@
-﻿using System;
+﻿using DSSL.Blog.Comments;
+using System;
+using System.Collections.Generic;
 using Volo.Abp.Application.Dtos;
 
 namespace DSSL.Blog.Posts
 {
     [Serializable]
-    public class PostDto : ExtensibleAuditedEntityDto<Guid>
+    public class PostDto : AuditedEntityDto<Guid>
     {
-        public string Title { get; set; }
-
-        public string HeaderImage { get; set; }
-
-        public string Tags { get; set; }
-
+        public Guid AuthorId { get; }
+        public string Title { get; }
+        public string HeaderImage { get; }
         public bool IsPublished { get; set; }
-
-        public Guid AuthorId { get; set; }
+        public ICollection<string> Tags { get; }
+        public ICollection<CommentDto> Comments { get; }
     }
 }

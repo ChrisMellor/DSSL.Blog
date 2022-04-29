@@ -44,8 +44,8 @@ namespace DSSL.Blog.Posts
             {
                 var post = await _postRepository.GetAsync(id);
 
-                var destination = new PostDto();
-                var postDto = ObjectMapper.Map<Post, PostDto>(post, destination);
+                var postDto = ObjectMapper.Map<Post, PostDto>(post);
+
                 return postDto;
             }
             catch (Exception ex)
