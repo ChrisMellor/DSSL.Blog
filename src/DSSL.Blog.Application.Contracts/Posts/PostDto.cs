@@ -8,11 +8,12 @@ namespace DSSL.Blog.Posts
     [Serializable]
     public class PostDto : AuditedEntityDto<Guid>
     {
-        public Guid AuthorId { get; }
-        public string Title { get; }
-        public string HeaderImage { get; }
-        public bool IsPublished { get; set; }
-        public ICollection<string> Tags { get; }
-        public ICollection<CommentDto> Comments { get; }
+        public Guid AuthorId { get; set; }
+        public string Title { get; set; }
+        public string HeaderImage { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public bool IsPublished => PublishDate.HasValue;
+        public ICollection<string> Tags { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
     }
 }

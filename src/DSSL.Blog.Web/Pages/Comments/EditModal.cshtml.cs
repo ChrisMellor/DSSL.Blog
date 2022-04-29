@@ -12,7 +12,7 @@ namespace DSSL.Blog.Web.Pages.Comments
         public Guid Id { get; set; }
 
         [BindProperty]
-        public CreateUpdateCommentDto Comment { get; set; }
+        public CommentUpdateDto Comment { get; set; }
 
         private readonly CommentAppService _commentAppService;
 
@@ -24,7 +24,7 @@ namespace DSSL.Blog.Web.Pages.Comments
         public async Task OnGetAsync()
         {
             var commentDto = await _commentAppService.GetAsync(Id);
-            Comment = ObjectMapper.Map<CommentDto, CreateUpdateCommentDto>(commentDto);
+            Comment = ObjectMapper.Map<CommentDto, CommentUpdateDto>(commentDto);
         }
 
         public async Task<IActionResult> OnPostAsync()
