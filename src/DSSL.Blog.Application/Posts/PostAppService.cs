@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Volo.Abp;
 using Volo.Abp.Application.Services;
+using Volo.Abp.Data;
 using Volo.Abp.Domain.Repositories;
 
 namespace DSSL.Blog.Posts
@@ -9,11 +11,13 @@ namespace DSSL.Blog.Posts
     {
         private readonly IRepository<Post, Guid> _postRepository;
         private readonly PostManager _postManager;
+        private readonly IDataFilter _dataFilter;
 
-        public PostAppService(IRepository<Post, Guid> postRepository, PostManager postManager)
+        public PostAppService(IRepository<Post, Guid> postRepository, PostManager postManager, IDataFilter dataFilter)
         {
             _postRepository = postRepository;
             _postManager = postManager;
+            _dataFilter = dataFilter;
         }
 
         public async Task<PostDto> CreateAsync(PostCreateDto input)
@@ -45,6 +49,19 @@ namespace DSSL.Blog.Posts
             var postDto = ObjectMapper.Map<Post, PostDto>(post);
 
             return postDto;
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            await _postRepository.DeleteAsync(id);
+        }
+
+        public async Task RestoreAsync(Guid id)
+        {
+            using (_dataFilter.Disable<ISoftDelete>())
+            {
+                var post = await _postRepository.GetAsync(id);
+            }
         }
     }
 }

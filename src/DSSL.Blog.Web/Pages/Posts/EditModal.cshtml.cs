@@ -12,7 +12,7 @@ namespace DSSL.Blog.Web.Pages.Posts
         public Guid Id { get; set; }
 
         [BindProperty]
-        public PostDto Post { get; set; }
+        public PostUpdateDto Post { get; set; }
 
         private readonly PostAppService _postAppService;
 
@@ -24,7 +24,7 @@ namespace DSSL.Blog.Web.Pages.Posts
         public async Task OnGetAsync()
         {
             var postDto = await _postAppService.GetAsync(Id);
-            Post = ObjectMapper.Map<PostDto, PostDto>(postDto);
+            Post = ObjectMapper.Map<PostDto, PostUpdateDto>(postDto);
         }
 
         public async Task<IActionResult> OnPostAsync()

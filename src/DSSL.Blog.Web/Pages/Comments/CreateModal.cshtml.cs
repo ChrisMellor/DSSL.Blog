@@ -7,7 +7,7 @@ namespace DSSL.Blog.Web.Pages.Comments
     public class CreateModalModel : BlogPageModel
     {
         [BindProperty]
-        public CommentUpdateDto Comment { get; set; }
+        public CommentCreateDto Comment { get; set; }
 
         private readonly CommentAppService _commentAppService;
 
@@ -18,7 +18,7 @@ namespace DSSL.Blog.Web.Pages.Comments
 
         public void OnGet()
         {
-            Comment = new CommentUpdateDto();
+            Comment = new CommentCreateDto();
         }
 
         public async Task<IActionResult> OnPostAsync()
