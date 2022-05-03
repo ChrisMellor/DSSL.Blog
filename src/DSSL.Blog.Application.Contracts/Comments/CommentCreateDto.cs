@@ -1,9 +1,6 @@
-﻿using System;
-using Volo.Abp.Application.Dtos;
-
-namespace DSSL.Blog.Comments
+﻿namespace DSSL.Blog.Comments
 {
-    public class CommentCreateDto : EntityDto<Guid>
+    public class CommentCreateDto
     {
         public string Message { get; set; }
     }

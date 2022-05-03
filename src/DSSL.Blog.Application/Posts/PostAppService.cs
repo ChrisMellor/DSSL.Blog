@@ -25,7 +25,7 @@ namespace DSSL.Blog.Posts
             return ObjectMapper.Map<Post, PostDto>(post);
         }
 
-        public async Task<PostDto> UpdateAsync(Guid id, PostDto input)
+        public async Task<PostDto> UpdateAsync(Guid id, PostUpdateDto input)
         {
             var post = await _postRepository.GetAsync(id);
 

@@ -10,6 +10,11 @@ namespace DSSL.Blog.Comments
 
         private Comment() { }
 
-        internal Comment(Guid id) : base(id) { }
+        internal Comment(Guid id,
+            string message,
+            Guid postId) : base(id)
+        {
+
+        }
     }
 }
