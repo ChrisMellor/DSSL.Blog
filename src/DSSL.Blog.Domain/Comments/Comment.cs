@@ -6,7 +6,7 @@ namespace DSSL.Blog.Comments
     public class Comment : Entity<Guid>
     {
         public string Message { get; set; }
-        public Guid PostId { get; set; }
+        public virtual Guid PostId { get; protected set; }
 
         internal Comment(Guid id, string message, Guid postId) : base(id)
         {
@@ -14,6 +14,6 @@ namespace DSSL.Blog.Comments
             PostId = postId;
         }
 
-        private Comment() { }
+        protected Comment() { }
     }
 }

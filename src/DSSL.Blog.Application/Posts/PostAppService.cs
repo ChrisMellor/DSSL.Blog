@@ -54,9 +54,8 @@ namespace DSSL.Blog.Posts
 
         public async Task<List<PostDto>> GetAllAsync()
         {
-            var post = await _postRepository.GetListAsync();
-
-            var postDtos = ObjectMapper.Map<List<Post>, List<PostDto>>(post);
+            var posts = await _postRepository.GetListAsync(x => x.PublishDate.HasValue);
+            var postDtos = new List<PostDto>(ObjectMapper.Map<List<Post>, List<PostDto>>(posts));
 
             return postDtos;
         }

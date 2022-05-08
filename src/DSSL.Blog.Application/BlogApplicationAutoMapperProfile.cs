@@ -10,7 +10,6 @@ public class BlogApplicationAutoMapperProfile : Profile
     public BlogApplicationAutoMapperProfile()
     {
         CreateMap<Post, PostDto>();
-        CreateMap<List<Post>, List<PostDto>>();
         CreateMap<PostUpdateDto, Post>();
         CreateMap<PostCreateDto, PostDto>();
 

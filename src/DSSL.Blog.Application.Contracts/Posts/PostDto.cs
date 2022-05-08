@@ -8,7 +8,6 @@ namespace DSSL.Blog.Posts
     [Serializable]
     public class PostDto : AuditedEntityDto<Guid>
     {
-        public Guid AuthorId { get; set; }
         public string Title { get; set; }
         public string HeaderImage { get; set; }
         public DateTime? PublishDate { get; set; }
