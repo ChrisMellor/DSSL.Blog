@@ -16,16 +16,25 @@
 @section scripts {
 <abp-script src="/Pages/Index.js" />
 }
-<div class="container">
-    @foreach (var post in Model.Posts)
-    {
-        <div class="card mb-3">
-            <img class="img-fluid" src="data:image/jpg;base64,@post.HeaderImage" alt="Image Header for @post.Title" />
-            <div class="card-body">
-                <h5 class="card-title">@post.Title</h5>
-                <p class="card-text">@post.Message</p>
-                <p class="card-text"><small class="text-muted">Published on @post.PublishDate</small></p>
-            </div>
-        </div>
-    }
-</div>
+<abp-container>
+    <div class="card-deck">
+        @foreach (var post in Model.Posts)
+        {
+            <abp-card class="mb-3">
+                <abp-card-header>
+                    <abp-row>
+                        <img abp-card-image="Top" src="data:image/jpg;base64,@post.HeaderImage" alt="Image Header for @post.Title" />
+                    </abp-row>
+                </abp-card-header>
+                <abp-card-body>
+                    <abp-card-title>@post.Title</abp-card-title>
+                    <abp-card-text>@post.Message</abp-card-text>
+                </abp-card-body>
+                <abp-card-footer>
+                    <abp-card-text class="text-muted">Published on @post.PublishDate</abp-card-text>
+                    <abp-button id="NewCommentButton" text="Add New Comment" icon="plus" button-type="Primary" />
+                </abp-card-footer>
+            </abp-card>
+        }
+    </div>
+</abp-container>
