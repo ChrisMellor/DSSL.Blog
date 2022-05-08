@@ -43,9 +43,8 @@ namespace DSSL.Blog.EntityFrameworkCore
 
                 b.HasIndex(x => x.Id);
 
-                b.HasOne<Post>()
-                    .WithMany()
-                    .HasForeignKey(x => x.PostId);
+                //b.HasOne<Post>()
+                //    .WithMany();
             });
         }
     }

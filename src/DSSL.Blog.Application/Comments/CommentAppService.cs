@@ -5,7 +5,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace DSSL.Blog.Comments
 {
-    public class CommentAppService : ApplicationService
+    public class CommentAppService : ApplicationService, ICommentAppService
     {
         private readonly IRepository<Comment, Guid> _commentRepository;
         private readonly CommentManager _commentManager;

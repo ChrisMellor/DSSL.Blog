@@ -1,3 +1,5 @@
 $(function () {
-    abp.log.debug('Index.js initialized!');
+    var l = abp.localization.getResource("Blog");
+
+
 });

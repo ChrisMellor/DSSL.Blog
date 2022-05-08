@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
@@ -49,6 +50,15 @@ namespace DSSL.Blog.Posts
             var postDto = ObjectMapper.Map<Post, PostDto>(post);
 
             return postDto;
+        }
+
+        public async Task<List<PostDto>> GetAllAsync()
+        {
+            var post = await _postRepository.GetListAsync();
+
+            var postDtos = ObjectMapper.Map<List<Post>, List<PostDto>>(post);
+
+            return postDtos;
         }
 
         public async Task DeleteAsync(Guid id)

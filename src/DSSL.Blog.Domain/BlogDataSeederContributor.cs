@@ -45,7 +45,7 @@ namespace DSSL.Blog
 
             for (var i = 0; i < random; i++)
             {
-                var message = LoremIpsum(0, 25, 0, 4, 2);
+                var message = LoremIpsum(1, 25, 1, 4, 2);
                 var comment = new Comment(_guidGenerator.Create(), message, post.Id);
                 comments.Add(comment);
             }
@@ -120,7 +120,6 @@ namespace DSSL.Blog
 
             for (var p = 0; p < numParagraphs; p++)
             {
-                result.Append("<p>");
                 for (var s = 0; s < sentences; s++)
                 {
                     for (var w = 0; w < wordIndex; w++)
@@ -130,7 +129,6 @@ namespace DSSL.Blog
                     }
                     result.Append(". ");
                 }
-                result.Append("</p>");
             }
 
             return result.ToString();

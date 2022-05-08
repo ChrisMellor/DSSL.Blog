@@ -8,9 +8,11 @@ namespace DSSL.Blog.Comments
         public string Message { get; set; }
         public Guid PostId { get; set; }
 
-        internal Comment(Guid id,
-            string message,
-            Guid postId) : base(id) { }
+        internal Comment(Guid id, string message, Guid postId) : base(id)
+        {
+            Message = message;
+            PostId = postId;
+        }
 
         private Comment() { }
     }

@@ -1,8 +1,6 @@
-﻿using System;
-using Volo.Abp.Application.Dtos;
-using Volo.Abp.Application.Services;
+﻿using Volo.Abp.Application.Services;
 
 namespace DSSL.Blog.Comments
 {
-    public interface ICommentAppService : ICrudAppService<CommentDto, Guid, PagedAndSortedResultRequestDto, CommentUpdateDto> { }
+    public interface ICommentAppService : IApplicationService { }
 }
