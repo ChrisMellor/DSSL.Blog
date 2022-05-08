@@ -20,21 +20,11 @@
     @foreach (var post in Model.Posts)
     {
         <div class="card mb-3">
-            <img src="data:image/jpg;base64,@post.HeaderImage" alt="Image Header for @post.Title" />
+            <img class="img-fluid" src="data:image/jpg;base64,@post.HeaderImage" alt="Image Header for @post.Title" />
             <div class="card-body">
                 <h5 class="card-title">@post.Title</h5>
-                <p class="card-text">Chris, you are an idiot, the post should have something meaningful. What kind of blog do you think work likes this?</p>
-                <p class="card-text"><small class="text-muted">Published at @post.PublishDate</small></p>
-            </div>
-            <ul class="list-group list-group-flush">
-                @foreach (var comment in post.Comments)
-                {
-                    <li class="list-group-item">@comment.Message</li>
-                }
-            </ul>
-            <div class="card-footer">
-                <label for="@post.Id">Want to add a new comment?</label>
-                <input type="text" class="form-control" id="@post.Id" />
+                <p class="card-text">@post.Message</p>
+                <p class="card-text"><small class="text-muted">Published on @post.PublishDate</small></p>
             </div>
         </div>
     }
