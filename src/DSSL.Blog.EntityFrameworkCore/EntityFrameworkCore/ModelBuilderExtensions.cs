@@ -26,7 +26,7 @@ namespace DSSL.Blog.EntityFrameworkCore
 
                 b.HasOne<IdentityUser>()
                     .WithMany()
-                    .HasForeignKey(x => x.AuthorId)
+                    .HasForeignKey(x => x.CreatorId)
                     .IsRequired();
 
                 b.Property(x => x.Tags)

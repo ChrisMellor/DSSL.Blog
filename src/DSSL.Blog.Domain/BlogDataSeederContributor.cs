@@ -45,11 +45,8 @@ namespace DSSL.Blog
 
             for (var i = 0; i < random; i++)
             {
-                var comment = new Comment(_guidGenerator.Create())
-                {
-                    Message = LoremIpsum(0, 25, 0, 4, 2),
-                    PostId = post.Id
-                };
+                var message = LoremIpsum(0, 25, 0, 4, 2);
+                var comment = new Comment(_guidGenerator.Create(), message, post.Id);
                 comments.Add(comment);
             }
 
