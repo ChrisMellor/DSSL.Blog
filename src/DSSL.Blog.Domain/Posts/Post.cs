@@ -1,7 +1,5 @@
-﻿using DSSL.Blog.Comments;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 
@@ -14,7 +12,6 @@ namespace DSSL.Blog.Posts
         public string HeaderImage { get; protected set; }
         public DateTime? PublishDate { get; protected set; }
         public ICollection<string> Tags { get; protected set; }
-        public ICollection<Comment> Comments { get; protected set; }
 
         public Post(
             Guid id,
@@ -29,7 +26,6 @@ namespace DSSL.Blog.Posts
             HeaderImage = headerImage;
             PublishDate = isPublished ? DateTime.UtcNow : null;
             Tags = tags;
-            Comments = new Collection<Comment>();
         }
 
         protected Post() { }
@@ -37,6 +33,11 @@ namespace DSSL.Blog.Posts
         internal void SetTitle(string title)
         {
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));
+        }
+
+        internal void SetMessage(string message)
+        {
+            Message = Check.NotNullOrWhiteSpace(message, nameof(message));
         }
 
         internal void SetHeaderImage(string headerImage)

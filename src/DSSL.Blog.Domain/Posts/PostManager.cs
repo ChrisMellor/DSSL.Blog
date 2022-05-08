@@ -6,9 +6,9 @@ namespace DSSL.Blog.Posts
 {
     public class PostManager : DomainService
     {
-        public async Task<Post> CreateAsync(string title, string headerImage, bool isPublished, ICollection<string> tags)
+        public async Task<Post> CreateAsync(string title, string message, string headerImage, bool isPublished, ICollection<string> tags)
         {
-            return new Post(GuidGenerator.Create(), title, headerImage, isPublished, tags);
+            return new Post(GuidGenerator.Create(), title, message, headerImage, isPublished, tags);
         }
 
         public async Task ChangeTitleAsync(Post post, string title)
@@ -19,6 +19,16 @@ namespace DSSL.Blog.Posts
             }
 
             post.SetTitle(title);
+        }
+
+        public async Task ChangeMessageAsync(Post post, string message)
+        {
+            if (post.Message == message)
+            {
+                return;
+            }
+
+            post.SetMessage(message);
         }
 
         public async Task PublishAsync(Post post, bool isPublished)

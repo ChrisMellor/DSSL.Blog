@@ -23,7 +23,7 @@ namespace DSSL.Blog.Posts
 
         public async Task<PostDto> CreateAsync(PostCreateDto input)
         {
-            var post = await _postManager.CreateAsync(input.Title, input.HeaderImage, input.IsPublished, input.Tags);
+            var post = await _postManager.CreateAsync(input.Title, input.Message, input.HeaderImage, input.IsPublished, input.Tags);
 
             await _postRepository.InsertAsync(post);
 
@@ -35,6 +35,7 @@ namespace DSSL.Blog.Posts
             var post = await _postRepository.GetAsync(id);
 
             await _postManager.ChangeTitleAsync(post, input.Title);
+            await _postManager.ChangeMessageAsync(post, input.Message);
             await _postManager.PublishAsync(post, input.IsPublished);
             await _postManager.ChangeHeaderImageAsync(post, input.HeaderImage);
 
