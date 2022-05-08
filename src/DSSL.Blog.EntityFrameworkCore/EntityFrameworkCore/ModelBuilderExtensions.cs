@@ -1,6 +1,5 @@
 ﻿using DSSL.Blog.Comments;
 using DSSL.Blog.Posts;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -23,11 +22,6 @@ namespace DSSL.Blog.EntityFrameworkCore
                     .IsRequired();
 
                 b.HasIndex(x => x.Id);
-
-                b.HasOne<IdentityUser>()
-                    .WithMany()
-                    .HasForeignKey(x => x.CreatorId)
-                    .IsRequired();
 
                 b.Property(x => x.Tags)
                     .HasConversion(Converters.Collection());

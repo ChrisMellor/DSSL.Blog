@@ -22,4 +22,5 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=SQL/@EntryIndexedValue">SQL</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Consts/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=DSSL/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Migrator/@EntryIndexedValue">True</s:Boolean>
 </wpf:ResourceDictionary>
