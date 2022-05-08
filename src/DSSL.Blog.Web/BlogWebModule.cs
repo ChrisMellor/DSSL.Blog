@@ -1,8 +1,6 @@
 using DSSL.Blog.EntityFrameworkCore;
 using DSSL.Blog.Localization;
-using DSSL.Blog.MultiTenancy;
 using DSSL.Blog.Web.Menus;
-using Metronic.Mvc.UI.Theme;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +15,7 @@ using Volo.Abp.AspNetCore.Authentication.JwtBearer;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
@@ -27,7 +26,6 @@ using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.SettingManagement.Web;
 using Volo.Abp.Swashbuckle;
-using Volo.Abp.TenantManagement.Web;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
@@ -42,9 +40,8 @@ namespace DSSL.Blog.Web;
     typeof(AbpIdentityWebModule),
     typeof(AbpSettingManagementWebModule),
     typeof(AbpAccountWebIdentityServerModule),
-    typeof(MetronicMvcUiThemeModule),
+    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
     typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-    typeof(AbpTenantManagementWebModule),
     typeof(AbpAspNetCoreSerilogModule),
     typeof(AbpSwashbuckleModule)
     )]
@@ -141,25 +138,7 @@ public class BlogWebModule : AbpModule
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
-            options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
-            options.Languages.Add(new LanguageInfo("en", "en", "English"));
             options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
-            options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
-            options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
-            options.Languages.Add(new LanguageInfo("fr", "fr", "Français"));
-            options.Languages.Add(new LanguageInfo("hi", "hi", "Hindi", "in"));
-            options.Languages.Add(new LanguageInfo("is", "is", "Icelandic", "is"));
-            options.Languages.Add(new LanguageInfo("it", "it", "Italiano", "it"));
-            options.Languages.Add(new LanguageInfo("pt-BR", "pt-BR", "Português"));
-            options.Languages.Add(new LanguageInfo("ro-RO", "ro-RO", "Română"));
-            options.Languages.Add(new LanguageInfo("ru", "ru", "Русский"));
-            options.Languages.Add(new LanguageInfo("sk", "sk", "Slovak"));
-            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
-            options.Languages.Add(new LanguageInfo("zh-Hans", "zh-Hans", "简体中文"));
-            options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
-            options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch", "de"));
-            options.Languages.Add(new LanguageInfo("es", "es", "Español"));
         });
     }
 
@@ -213,12 +192,6 @@ public class BlogWebModule : AbpModule
         app.UseRouting();
         app.UseAuthentication();
         app.UseJwtTokenMiddleware();
-
-        if (MultiTenancyConsts.IsEnabled)
-        {
-            app.UseMultiTenancy();
-        }
-
         app.UseUnitOfWork();
         app.UseIdentityServer();
         app.UseAuthorization();

@@ -1,10 +1,10 @@
 ﻿using System;
-using Volo.Abp.Application.Dtos;
 
 namespace DSSL.Blog.Comments
 {
-    public class CommentDto : EntityDto<Guid>
+    public class CommentCreateDto
     {
         public string Message { get; set; }
+        public Guid PostId { get; set; }
     }
 }

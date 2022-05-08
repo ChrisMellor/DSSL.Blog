@@ -53,10 +53,7 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 
     #endregion
 
-    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
-    {
-
-    }
+    public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
