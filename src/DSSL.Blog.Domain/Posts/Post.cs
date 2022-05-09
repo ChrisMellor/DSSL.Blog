@@ -31,22 +31,25 @@ namespace Dssl.Blog.Posts
 
         protected Post() { }
 
-        internal void SetTitle(string title)
+        internal Post SetTitle(string title)
         {
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));
+            return this;
         }
 
-        internal void SetMessage(string message)
+        internal Post SetMessage(string message)
         {
             Message = Check.NotNullOrWhiteSpace(message, nameof(message));
+            return this;
         }
 
-        internal void SetHeaderImage(string headerImage)
+        internal Post SetHeaderImage(string headerImage)
         {
             HeaderImage = Check.NotNullOrWhiteSpace(headerImage, nameof(headerImage));
+            return this;
         }
 
-        internal void Publish()
+        internal Post Publish()
         {
             if (PublishDate.HasValue)
             {
@@ -54,6 +57,17 @@ namespace Dssl.Blog.Posts
             }
 
             PublishDate = DateTime.UtcNow;
+            return this;
+        }
+
+        internal void AddTag(Guid tagId)
+        {
+            Tags.Add(new PostTag(Id, tagId));
+        }
+
+        internal void RemoveTag(Guid tagId)
+        {
+            Tags.RemoveAll(x => x.TagId == tagId);
         }
     }
 }
