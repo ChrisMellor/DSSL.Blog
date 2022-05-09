@@ -7,7 +7,7 @@ namespace Dssl.Blog.Web.Pages.Posts
     public class CreateModalModel : BlogPageModel
     {
         [BindProperty]
-        public PostCreateDto Post { get; set; }
+        public CreatePostDto CreatePost { get; set; }
 
         private readonly PostAppService _postAppService;
 
@@ -18,12 +18,12 @@ namespace Dssl.Blog.Web.Pages.Posts
 
         public void OnGet()
         {
-            Post = new PostCreateDto();
+            CreatePost = new CreatePostDto();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            await _postAppService.CreateAsync(Post);
+            await _postAppService.CreateAsync(CreatePost);
             return NoContent();
         }
     }

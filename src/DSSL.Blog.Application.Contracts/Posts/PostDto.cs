@@ -4,7 +4,7 @@ using Volo.Abp.Application.Dtos;
 namespace Dssl.Blog.Posts
 {
     [Serializable]
-    public class PostDto : FullAuditedEntityDto<Guid>
+    public class PostDto : EntityDto<Guid>
     {
         public string Title { get; set; }
         public string Message { get; set; }

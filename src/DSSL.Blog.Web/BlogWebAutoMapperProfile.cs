@@ -7,7 +7,7 @@ namespace Dssl.Blog.Web
     {
         public BlogWebAutoMapperProfile()
         {
-            CreateMap<PostDto, PostUpdateDto>();
+            CreateMap<PostDto, UpdatePostDto>();
         }
     }
 }

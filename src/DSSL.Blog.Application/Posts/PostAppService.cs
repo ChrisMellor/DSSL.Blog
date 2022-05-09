@@ -21,7 +21,7 @@ namespace Dssl.Blog.Posts
             _dataFilter = dataFilter;
         }
 
-        public async Task<PostDto> CreateAsync(PostCreateDto input)
+        public async Task<PostDto> CreateAsync(CreatePostDto input)
         {
             var post = await _postManager.CreateAsync(input.Title, input.Message, input.HeaderImage, input.IsPublished, input.Tags);
 
@@ -30,7 +30,7 @@ namespace Dssl.Blog.Posts
             return ObjectMapper.Map<Post, PostDto>(post);
         }
 
-        public async Task<PostDto> UpdateAsync(Guid id, PostUpdateDto input)
+        public async Task<PostDto> UpdateAsync(Guid id, UpdatePostDto input)
         {
             var post = await _postRepository.GetAsync(id);
 

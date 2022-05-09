@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using Volo.Abp.Application.Dtos;
 
 namespace Dssl.Blog.Posts
 {
     [Serializable]
-    public class PostCreateDto
+    public class UpdatePostDto : EntityDto<Guid>
     {
         public string Title { get; set; }
         public string Message { get; set; }
         public string HeaderImage { get; set; }
-        public bool IsPublished { get; set; }
-        public ICollection<string> Tags { get; set; }
+        private bool HasPublished { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace Dssl.Blog
         public BlogApplicationAutoMapperProfile()
         {
             CreateMap<Post, PostDto>();
-            CreateMap<PostUpdateDto, Post>();
-            CreateMap<PostCreateDto, PostDto>();
+            CreateMap<UpdatePostDto, Post>();
+            CreateMap<CreatePostDto, PostDto>();
         }
     }
 }
