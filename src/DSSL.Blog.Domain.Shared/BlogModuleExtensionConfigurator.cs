@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Volo.Abp.Identity;
-using Volo.Abp.ObjectExtending;
-using Volo.Abp.Threading;
+﻿using Volo.Abp.Threading;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 public static class BlogModuleExtensionConfigurator
 {

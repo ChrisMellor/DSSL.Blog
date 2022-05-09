@@ -1,4 +1,4 @@
-﻿namespace DSSL.Blog.Settings;
+﻿namespace Dssl.Blog.Settings;
 
 public static class BlogSettings
 {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Services;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     public class PostManager : DomainService
     {

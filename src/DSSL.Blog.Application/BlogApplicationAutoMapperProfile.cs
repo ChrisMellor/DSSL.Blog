@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using DSSL.Blog.Posts;
+using Dssl.Blog.Posts;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     public class BlogApplicationAutoMapperProfile : Profile
     {

@@ -18,7 +18,7 @@ using ApiResource = Volo.Abp.IdentityServer.ApiResources.ApiResource;
 using ApiScope = Volo.Abp.IdentityServer.ApiScopes.ApiScope;
 using Client = Volo.Abp.IdentityServer.Clients.Client;
 
-namespace DSSL.Blog.IdentityServer
+namespace Dssl.Blog.IdentityServer
 {
     public class IdentityServerDataSeedContributor : IDataSeedContributor, ITransientDependency
     {

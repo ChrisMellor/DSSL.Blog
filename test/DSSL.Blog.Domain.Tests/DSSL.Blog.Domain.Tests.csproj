@@ -4,11 +4,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>DSSL.Blog</RootNamespace>
+    <RootNamespace>Dssl.Blog</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSSL.Blog.EntityFrameworkCore.Tests\DSSL.Blog.EntityFrameworkCore.Tests.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.EntityFrameworkCore.Tests\Dssl.Blog.EntityFrameworkCore.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

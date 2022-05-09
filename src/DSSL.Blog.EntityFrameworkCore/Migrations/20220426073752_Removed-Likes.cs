@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DSSL.Blog.Migrations
+namespace Dssl.Blog.Migrations
 {
     public partial class RemovedLikes : Migration
     {

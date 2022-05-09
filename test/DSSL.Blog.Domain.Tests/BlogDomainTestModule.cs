@@ -1,7 +1,7 @@
-﻿using DSSL.Blog.EntityFrameworkCore;
+﻿using Dssl.Blog.EntityFrameworkCore;
 using Volo.Abp.Modularity;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 [DependsOn(
     typeof(BlogEntityFrameworkCoreTestModule)

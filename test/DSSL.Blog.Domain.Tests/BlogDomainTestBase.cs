@@ -1,4 +1,4 @@
-﻿namespace DSSL.Blog;
+﻿namespace Dssl.Blog;
 
 public abstract class BlogDomainTestBase : BlogTestBase<BlogDomainTestModule>
 {

@@ -6,7 +6,7 @@ using Volo.Abp.Application.Services;
 using Volo.Abp.Data;
 using Volo.Abp.Domain.Repositories;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     public class PostAppService : ApplicationService
     {

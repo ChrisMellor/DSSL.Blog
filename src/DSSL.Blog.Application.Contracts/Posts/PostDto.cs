@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Application.Dtos;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     [Serializable]
     public class PostDto : FullAuditedEntityDto<Guid>

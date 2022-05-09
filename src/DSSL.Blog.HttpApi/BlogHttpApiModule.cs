@@ -1,4 +1,4 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Localization.Resources.AbpUi;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
@@ -9,7 +9,7 @@ using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     [DependsOn(
         typeof(BlogApplicationContractsModule),

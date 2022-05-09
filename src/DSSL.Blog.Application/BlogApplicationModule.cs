@@ -6,7 +6,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     [DependsOn(
         typeof(BlogDomainModule),

@@ -11,7 +11,7 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     [DependsOn(
         typeof(BlogDomainSharedModule),

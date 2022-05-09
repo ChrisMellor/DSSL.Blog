@@ -8,7 +8,7 @@ using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
 
-namespace DSSL.Blog.EntityFrameworkCore;
+namespace Dssl.Blog.EntityFrameworkCore;
 
 [DependsOn(
     typeof(BlogEntityFrameworkCoreModule),

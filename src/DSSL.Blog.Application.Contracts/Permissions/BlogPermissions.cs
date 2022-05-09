@@ -1,4 +1,4 @@
-﻿namespace DSSL.Blog.Permissions
+﻿namespace Dssl.Blog.Permissions
 {
     public static class BlogPermissions
     {

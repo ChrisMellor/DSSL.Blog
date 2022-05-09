@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
-using Shouldly;
+﻿using Shouldly;
+using System.Threading.Tasks;
 using Volo.Abp.Identity;
 using Xunit;
 
-namespace DSSL.Blog.Samples;
+namespace Dssl.Blog.Samples;
 
 /* This is just an example test class.
  * Normally, you don't test code of the modules you are using

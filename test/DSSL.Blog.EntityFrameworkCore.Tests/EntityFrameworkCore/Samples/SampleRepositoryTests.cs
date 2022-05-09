@@ -7,7 +7,7 @@ using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Identity;
 using Xunit;
 
-namespace DSSL.Blog.EntityFrameworkCore.Samples;
+namespace Dssl.Blog.EntityFrameworkCore.Samples;
 
 /* This is just an example test class.
  * Normally, you don't test ABP framework code
@@ -31,13 +31,13 @@ public class SampleRepositoryTests : BlogEntityFrameworkCoreTestBase
          */
         await WithUnitOfWorkAsync(async () =>
         {
-                //Act
-                var adminUser = await (await _appUserRepository.GetQueryableAsync())
-                .Where(u => u.UserName == "admin")
-                .FirstOrDefaultAsync();
+            //Act
+            var adminUser = await (await _appUserRepository.GetQueryableAsync())
+            .Where(u => u.UserName == "admin")
+            .FirstOrDefaultAsync();
 
-                //Assert
-                adminUser.ShouldNotBeNull();
+            //Assert
+            adminUser.ShouldNotBeNull();
         });
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Polly;
+using System;
 using Volo.Abp.Autofac;
 using Volo.Abp.Http.Client;
 using Volo.Abp.Http.Client.IdentityModel;
 using Volo.Abp.Modularity;
 
-namespace DSSL.Blog.HttpApi.Client.ConsoleTestApp;
+namespace Dssl.Blog.HttpApi.Client.ConsoleTestApp;
 
 [DependsOn(
     typeof(AbpAutofacModule),

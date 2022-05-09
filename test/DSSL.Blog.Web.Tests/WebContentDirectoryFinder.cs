@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 /// <summary>
 /// This class is used to find root path of the web project. Used for;
@@ -25,23 +25,23 @@ public static class WebContentDirectoryFinder
 
         if (Environment.GetEnvironmentVariable("NCrunch") == "1")
         {
-            while (!DirectoryContains(directoryInfo.FullName, "DSSL.Blog.Web.csproj", SearchOption.AllDirectories))
+            while (!DirectoryContains(directoryInfo.FullName, "Dssl.Blog.Web.csproj", SearchOption.AllDirectories))
             {
                 directoryInfo = directoryInfo.Parent ?? throw new Exception("Could not find content root folder!");
             }
 
             var webProject = Directory.GetFiles(directoryInfo.FullName, string.Empty, SearchOption.AllDirectories)
-                .First(filePath => string.Equals(Path.GetFileName(filePath), "DSSL.Blog.Web.csproj"));
+                .First(filePath => string.Equals(Path.GetFileName(filePath), "Dssl.Blog.Web.csproj"));
 
             return Path.GetDirectoryName(webProject);
         }
 
-        while (!DirectoryContains(directoryInfo.FullName, "DSSL.Blog.sln"))
+        while (!DirectoryContains(directoryInfo.FullName, "Dssl.Blog.sln"))
         {
             directoryInfo = directoryInfo.Parent ?? throw new Exception("Could not find content root folder!");
         }
 
-        var webFolder = Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}DSSL.Blog.Web");
+        var webFolder = Path.Combine(directoryInfo.FullName, $"src{Path.DirectorySeparatorChar}Dssl.Blog.Web");
         if (Directory.Exists(webFolder))
         {
             return webFolder;

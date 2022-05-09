@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Application.Services;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     public interface IPostAppService : IApplicationService { }
 }

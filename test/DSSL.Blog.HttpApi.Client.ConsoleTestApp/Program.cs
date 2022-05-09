@@ -1,9 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
-namespace DSSL.Blog.HttpApi.Client.ConsoleTestApp;
+namespace Dssl.Blog.HttpApi.Client.ConsoleTestApp;
 
 class Program
 {

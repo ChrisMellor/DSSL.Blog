@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Settings;
 
-namespace DSSL.Blog.Settings;
+namespace Dssl.Blog.Settings;
 
 public class BlogSettingDefinitionProvider : SettingDefinitionProvider
 {

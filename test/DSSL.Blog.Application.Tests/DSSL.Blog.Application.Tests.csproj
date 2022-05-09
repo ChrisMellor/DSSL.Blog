@@ -4,12 +4,12 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>DSSL.Blog</RootNamespace>
+    <RootNamespace>Dssl.Blog</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DSSL.Blog.Application\DSSL.Blog.Application.csproj" />
-    <ProjectReference Include="..\DSSL.Blog.Domain.Tests\DSSL.Blog.Domain.Tests.csproj" />
+    <ProjectReference Include="..\..\src\Dssl.Blog.Application\Dssl.Blog.Application.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.Domain.Tests\Dssl.Blog.Domain.Tests.csproj" />
   </ItemGroup>
 
   <ItemGroup>

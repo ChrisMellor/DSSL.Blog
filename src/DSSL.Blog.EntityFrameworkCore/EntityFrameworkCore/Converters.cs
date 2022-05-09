@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     public static class Converters
     {

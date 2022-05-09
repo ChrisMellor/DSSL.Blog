@@ -1,8 +1,8 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Localization;
 
-namespace DSSL.Blog.Permissions
+namespace Dssl.Blog.Permissions
 {
     public class BlogPermissionDefinitionProvider : PermissionDefinitionProvider
     {

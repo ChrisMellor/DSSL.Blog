@@ -4,12 +4,12 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>DSSL.Blog</RootNamespace>
+    <RootNamespace>Dssl.Blog</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DSSL.Blog.EntityFrameworkCore\DSSL.Blog.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\DSSL.Blog.TestBase\DSSL.Blog.TestBase.csproj" />
+    <ProjectReference Include="..\..\src\Dssl.Blog.EntityFrameworkCore\Dssl.Blog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.TestBase\Dssl.Blog.TestBase.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="5.1.4" />
   </ItemGroup>
 

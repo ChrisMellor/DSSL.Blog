@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DSSL.Blog.Models.Test
+namespace Dssl.Blog.Models.Test
 {
     public class TestModel
     {

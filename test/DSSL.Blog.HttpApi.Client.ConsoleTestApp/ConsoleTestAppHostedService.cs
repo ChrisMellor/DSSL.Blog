@@ -1,11 +1,11 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace DSSL.Blog.HttpApi.Client.ConsoleTestApp;
+namespace Dssl.Blog.HttpApi.Client.ConsoleTestApp;
 
 public class ConsoleTestAppHostedService : IHostedService
 {
@@ -20,8 +20,8 @@ public class ConsoleTestAppHostedService : IHostedService
     {
         using (var application = await AbpApplicationFactory.CreateAsync<BlogConsoleApiClientModule>(options =>
         {
-           options.Services.ReplaceConfiguration(_configuration);
-           options.UseAutofac();
+            options.Services.ReplaceConfiguration(_configuration);
+            options.UseAutofac();
         }))
         {
             await application.InitializeAsync();

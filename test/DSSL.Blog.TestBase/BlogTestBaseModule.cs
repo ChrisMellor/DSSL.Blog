@@ -8,7 +8,7 @@ using Volo.Abp.IdentityServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.Threading;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 [DependsOn(
     typeof(AbpAutofacModule),

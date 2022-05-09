@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Threading;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     public static class BlogGlobalFeatureConfigurator
     {

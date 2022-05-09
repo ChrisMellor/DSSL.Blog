@@ -1,4 +1,4 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -13,7 +13,7 @@ using Volo.Abp.TenantManagement;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     [DependsOn(
         typeof(AbpAuditLoggingDomainSharedModule),

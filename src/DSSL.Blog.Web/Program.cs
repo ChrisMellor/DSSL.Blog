@@ -6,7 +6,7 @@ using Serilog.Events;
 using System;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web
+namespace Dssl.Blog.Web
 {
     public class Program
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     public class Post : FullAuditedAggregateRoot<Guid>
     {

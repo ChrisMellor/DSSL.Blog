@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Threading;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     public static class BlogEfCoreEntityExtensionMappings
     {

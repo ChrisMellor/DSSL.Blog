@@ -6,7 +6,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
-    <RootNamespace>DSSL.Blog</RootNamespace>
+    <RootNamespace>Dssl.Blog</RootNamespace>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
@@ -15,8 +15,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.36" />
-    <ProjectReference Include="..\DSSL.Blog.Application.Tests\DSSL.Blog.Application.Tests.csproj" />
-    <ProjectReference Include="..\..\src\DSSL.Blog.Web\DSSL.Blog.Web.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.Application.Tests\Dssl.Blog.Application.Tests.csproj" />
+    <ProjectReference Include="..\..\src\Dssl.Blog.Web\Dssl.Blog.Web.csproj" />
     <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="5.1.4" />
   </ItemGroup>
 

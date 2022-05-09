@@ -5,7 +5,7 @@ using Serilog;
 using Serilog.Events;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.DbMigrator
+namespace Dssl.Blog.DbMigrator
 {
     internal class Program
     {
@@ -16,9 +16,9 @@ namespace DSSL.Blog.DbMigrator
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
                 .MinimumLevel.Override("Volo.Abp", LogEventLevel.Warning)
 #if DEBUG
-                .MinimumLevel.Override("DSSL.Blog", LogEventLevel.Debug)
+                .MinimumLevel.Override("Dssl.Blog", LogEventLevel.Debug)
 #else
-                .MinimumLevel.Override("DSSL.Blog", LogEventLevel.Information)
+                .MinimumLevel.Override("Dssl.Blog", LogEventLevel.Information)
 #endif
                 .Enrich.FromLogContext()
                 .WriteTo.Async(c => c.File("Logs/logs.txt"))

@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Modularity;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 [DependsOn(
     typeof(BlogApplicationModule),

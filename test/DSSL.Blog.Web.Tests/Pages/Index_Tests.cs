@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Shouldly;
+﻿using Shouldly;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace DSSL.Blog.Pages;
+namespace Dssl.Blog.Pages;
 
 public class Index_Tests : BlogWebTestBase
 {

@@ -1,6 +1,4 @@
-﻿using Volo.Abp;
-
-namespace DSSL.Blog.EntityFrameworkCore;
+﻿namespace Dssl.Blog.EntityFrameworkCore;
 
 public abstract class BlogEntityFrameworkCoreTestBase : BlogTestBase<BlogEntityFrameworkCoreTestModule>
 {

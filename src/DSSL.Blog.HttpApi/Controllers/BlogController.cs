@@ -1,7 +1,7 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace DSSL.Blog.Controllers
+namespace Dssl.Blog.Controllers
 {
     public abstract class BlogController : AbpControllerBase
     {

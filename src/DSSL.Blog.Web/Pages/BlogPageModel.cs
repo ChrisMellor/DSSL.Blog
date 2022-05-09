@@ -1,7 +1,7 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace DSSL.Blog.Web.Pages
+namespace Dssl.Blog.Web.Pages
 {
     public abstract class BlogPageModel : AbpPageModel
     {

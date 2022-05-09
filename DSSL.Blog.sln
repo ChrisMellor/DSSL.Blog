@@ -3,39 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Domain", "src\DSSL.Blog.Domain\DSSL.Blog.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Domain", "src\Dssl.Blog.Domain\Dssl.Blog.Domain.csproj", "{554AD327-6DBA-4F8F-96F8-81CE7A0C863F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Application", "src\DSSL.Blog.Application\DSSL.Blog.Application.csproj", "{1A94A50E-06DC-43C1-80B5-B662820EC3EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Application", "src\Dssl.Blog.Application\Dssl.Blog.Application.csproj", "{1A94A50E-06DC-43C1-80B5-B662820EC3EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.EntityFrameworkCore", "src\DSSL.Blog.EntityFrameworkCore\DSSL.Blog.EntityFrameworkCore.csproj", "{C956DD76-69C8-4A9C-83EA-D17DF83340FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.EntityFrameworkCore", "src\Dssl.Blog.EntityFrameworkCore\Dssl.Blog.EntityFrameworkCore.csproj", "{C956DD76-69C8-4A9C-83EA-D17DF83340FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Web", "src\DSSL.Blog.Web\DSSL.Blog.Web.csproj", "{068855E8-9240-4F1A-910B-CF825794513B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Web", "src\Dssl.Blog.Web\Dssl.Blog.Web.csproj", "{068855E8-9240-4F1A-910B-CF825794513B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CA9AC87F-097E-4F15-8393-4BC07735A5B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04DBDB01-70F4-4E06-B468-8F87850B22BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Application.Tests", "test\DSSL.Blog.Application.Tests\DSSL.Blog.Application.Tests.csproj", "{50B2631D-129C-47B3-A587-029CCD6099BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Application.Tests", "test\Dssl.Blog.Application.Tests\Dssl.Blog.Application.Tests.csproj", "{50B2631D-129C-47B3-A587-029CCD6099BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Web.Tests", "test\DSSL.Blog.Web.Tests\DSSL.Blog.Web.Tests.csproj", "{5F1B28C6-8D0C-4155-92D0-252F7EA5F674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Web.Tests", "test\Dssl.Blog.Web.Tests\Dssl.Blog.Web.Tests.csproj", "{5F1B28C6-8D0C-4155-92D0-252F7EA5F674}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Domain.Shared", "src\DSSL.Blog.Domain.Shared\DSSL.Blog.Domain.Shared.csproj", "{42F719ED-8413-4895-B5B4-5AB56079BC66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Domain.Shared", "src\Dssl.Blog.Domain.Shared\Dssl.Blog.Domain.Shared.csproj", "{42F719ED-8413-4895-B5B4-5AB56079BC66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Application.Contracts", "src\DSSL.Blog.Application.Contracts\DSSL.Blog.Application.Contracts.csproj", "{520659C8-C734-4298-A3DA-B539DB9DFC0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Application.Contracts", "src\Dssl.Blog.Application.Contracts\Dssl.Blog.Application.Contracts.csproj", "{520659C8-C734-4298-A3DA-B539DB9DFC0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.HttpApi", "src\DSSL.Blog.HttpApi\DSSL.Blog.HttpApi.csproj", "{4164BDF7-F527-4E85-9CE6-E3C2D7426A27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.HttpApi", "src\Dssl.Blog.HttpApi\Dssl.Blog.HttpApi.csproj", "{4164BDF7-F527-4E85-9CE6-E3C2D7426A27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.HttpApi.Client", "src\DSSL.Blog.HttpApi.Client\DSSL.Blog.HttpApi.Client.csproj", "{3B5A0094-670D-4BB1-BFDD-61B88A8773DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.HttpApi.Client", "src\Dssl.Blog.HttpApi.Client\Dssl.Blog.HttpApi.Client.csproj", "{3B5A0094-670D-4BB1-BFDD-61B88A8773DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.EntityFrameworkCore.Tests", "test\DSSL.Blog.EntityFrameworkCore.Tests\DSSL.Blog.EntityFrameworkCore.Tests.csproj", "{1FE30EB9-74A9-47F5-A9F6-7B1FAB672D81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.EntityFrameworkCore.Tests", "test\Dssl.Blog.EntityFrameworkCore.Tests\Dssl.Blog.EntityFrameworkCore.Tests.csproj", "{1FE30EB9-74A9-47F5-A9F6-7B1FAB672D81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.TestBase", "test\DSSL.Blog.TestBase\DSSL.Blog.TestBase.csproj", "{91853F21-9CD9-4132-BC29-A7D5D84FFFE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.TestBase", "test\Dssl.Blog.TestBase\Dssl.Blog.TestBase.csproj", "{91853F21-9CD9-4132-BC29-A7D5D84FFFE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.Domain.Tests", "test\DSSL.Blog.Domain.Tests\DSSL.Blog.Domain.Tests.csproj", "{E512F4D9-9375-480F-A2F6-A46509F9D824}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.Domain.Tests", "test\Dssl.Blog.Domain.Tests\Dssl.Blog.Domain.Tests.csproj", "{E512F4D9-9375-480F-A2F6-A46509F9D824}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.HttpApi.Client.ConsoleTestApp", "test\DSSL.Blog.HttpApi.Client.ConsoleTestApp\DSSL.Blog.HttpApi.Client.ConsoleTestApp.csproj", "{EF480016-9127-4916-8735-D2466BDBC582}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.HttpApi.Client.ConsoleTestApp", "test\Dssl.Blog.HttpApi.Client.ConsoleTestApp\Dssl.Blog.HttpApi.Client.ConsoleTestApp.csproj", "{EF480016-9127-4916-8735-D2466BDBC582}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DSSL.Blog.DbMigrator", "src\DSSL.Blog.DbMigrator\DSSL.Blog.DbMigrator.csproj", "{AA94D832-1CCC-4715-95A9-A483F23A1A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dssl.Blog.DbMigrator", "src\Dssl.Blog.DbMigrator\Dssl.Blog.DbMigrator.csproj", "{AA94D832-1CCC-4715-95A9-A483F23A1A5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

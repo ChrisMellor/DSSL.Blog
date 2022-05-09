@@ -1,9 +1,9 @@
-﻿using DSSL.Blog.EntityFrameworkCore;
+﻿using Dssl.Blog.EntityFrameworkCore;
 using Volo.Abp.Autofac;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Modularity;
 
-namespace DSSL.Blog.DbMigrator
+namespace Dssl.Blog.DbMigrator
 {
     [DependsOn(
         typeof(AbpAutofacModule),

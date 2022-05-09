@@ -1,4 +1,4 @@
-﻿using DSSL.Blog.Posts;
+﻿using Dssl.Blog.Posts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,7 +8,7 @@ using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Guids;
 using Volo.Abp.Identity;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     public class BlogDataSeederContributor : IDataSeedContributor, ITransientDependency
     {

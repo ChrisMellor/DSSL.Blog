@@ -1,6 +1,6 @@
-using DSSL.Blog.EntityFrameworkCore;
-using DSSL.Blog.Localization;
-using DSSL.Blog.Web.Menus;
+using Dssl.Blog.EntityFrameworkCore;
+using Dssl.Blog.Localization;
+using Dssl.Blog.Web.Menus;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +30,7 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 
-namespace DSSL.Blog.Web
+namespace Dssl.Blog.Web
 {
     [DependsOn(
         typeof(BlogHttpApiModule),
@@ -125,10 +125,10 @@ namespace DSSL.Blog.Web
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Dssl.Blog.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Dssl.Blog.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Dssl.Blog.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}Dssl.Blog.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<BlogWebModule>(hostingEnvironment.ContentRootPath);
                 });
             }

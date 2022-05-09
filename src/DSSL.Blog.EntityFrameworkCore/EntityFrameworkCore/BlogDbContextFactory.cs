@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     public class BlogDbContextFactory : IDesignTimeDbContextFactory<BlogDbContext>
     {
@@ -22,7 +22,7 @@ namespace DSSL.Blog.EntityFrameworkCore
         private static IConfigurationRoot BuildConfiguration()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../DSSL.Blog.DbMigrator/"))
+                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../Dssl.Blog.DbMigrator/"))
                 .AddJsonFile("appsettings.json", optional: false);
 
             return builder.Build();

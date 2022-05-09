@@ -1,10 +1,10 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using System.Threading.Tasks;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.UI.Navigation;
 
-namespace DSSL.Blog.Web.Menus
+namespace Dssl.Blog.Web.Menus
 {
     public class BlogMenuContributor : IMenuContributor
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     [Serializable]
     public class PostUpdateDto

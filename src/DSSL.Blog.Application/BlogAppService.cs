@@ -1,7 +1,7 @@
-﻿using DSSL.Blog.Localization;
+﻿using Dssl.Blog.Localization;
 using Volo.Abp.Application.Services;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
     public abstract class BlogAppService : ApplicationService
     {

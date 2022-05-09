@@ -7,7 +7,7 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace DSSL.Blog
+namespace Dssl.Blog
 {
 
     [DependsOn(

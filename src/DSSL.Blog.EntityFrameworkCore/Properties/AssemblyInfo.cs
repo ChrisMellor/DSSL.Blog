@@ -1,2 +1,2 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleToAttribute("DSSL.Blog.EntityFrameworkCore.Tests")]
+[assembly: InternalsVisibleToAttribute("Dssl.Blog.EntityFrameworkCore.Tests")]

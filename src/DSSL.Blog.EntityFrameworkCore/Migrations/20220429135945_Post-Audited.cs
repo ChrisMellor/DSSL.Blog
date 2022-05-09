@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
-namespace DSSL.Blog.Migrations
+namespace Dssl.Blog.Migrations
 {
     public partial class PostAudited : Migration
     {

@@ -1,8 +1,8 @@
-﻿using DSSL.Blog.Posts;
+﻿using Dssl.Blog.Posts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web.Pages
+namespace Dssl.Blog.Web.Pages
 {
     public class IndexModel : BlogPageModel
     {

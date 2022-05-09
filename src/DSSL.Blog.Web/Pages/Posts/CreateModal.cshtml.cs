@@ -1,8 +1,8 @@
-using DSSL.Blog.Posts;
+using Dssl.Blog.Posts;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web.Pages.Posts
+namespace Dssl.Blog.Web.Pages.Posts
 {
     public class CreateModalModel : BlogPageModel
     {

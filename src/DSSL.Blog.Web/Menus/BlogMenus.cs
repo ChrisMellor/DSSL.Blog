@@ -1,4 +1,4 @@
-﻿namespace DSSL.Blog.Web.Menus
+﻿namespace Dssl.Blog.Web.Menus
 {
     public class BlogMenus
     {

@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
-[assembly:InternalsVisibleToAttribute("DSSL.Blog.Domain.Tests")]
-[assembly:InternalsVisibleToAttribute("DSSL.Blog.TestBase")]
+[assembly: InternalsVisibleToAttribute("Dssl.Blog.Domain.Tests")]
+[assembly: InternalsVisibleToAttribute("Dssl.Blog.TestBase")]

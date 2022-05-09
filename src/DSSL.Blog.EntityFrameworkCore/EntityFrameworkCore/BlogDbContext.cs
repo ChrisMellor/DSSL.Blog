@@ -1,4 +1,4 @@
-﻿using DSSL.Blog.Posts;
+﻿using Dssl.Blog.Posts;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -14,7 +14,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     [ReplaceDbContext(typeof(IIdentityDbContext))]
     [ReplaceDbContext(typeof(ITenantManagementDbContext))]

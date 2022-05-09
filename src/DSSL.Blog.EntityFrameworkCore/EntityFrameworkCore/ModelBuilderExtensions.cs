@@ -1,9 +1,9 @@
-﻿using DSSL.Blog.Posts;
+﻿using Dssl.Blog.Posts;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     public static class ModelBuilderExtensions
     {

@@ -29,8 +29,8 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Autofac" Version="5.1.4" />
-    <ProjectReference Include="..\DSSL.Blog.Application.Contracts\DSSL.Blog.Application.Contracts.csproj" />
-    <ProjectReference Include="..\DSSL.Blog.EntityFrameworkCore\DSSL.Blog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.Application.Contracts\Dssl.Blog.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.EntityFrameworkCore\Dssl.Blog.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,14 +4,14 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>DSSL.Blog.Web</RootNamespace>
+    <RootNamespace>Dssl.Blog.Web</RootNamespace>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
-    <UserSecretsId>DSSL.Blog-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
+    <UserSecretsId>Dssl.Blog-4681b4fd-151f-4221-84a4-929d86723e4c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,9 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DSSL.Blog.Application\DSSL.Blog.Application.csproj" />
-    <ProjectReference Include="..\DSSL.Blog.HttpApi\DSSL.Blog.HttpApi.csproj" />
-    <ProjectReference Include="..\DSSL.Blog.EntityFrameworkCore\DSSL.Blog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.Application\Dssl.Blog.Application.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.HttpApi\Dssl.Blog.HttpApi.csproj" />
+    <ProjectReference Include="..\Dssl.Blog.EntityFrameworkCore\Dssl.Blog.EntityFrameworkCore.csproj" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic" Version="5.1.4" />
     <PackageReference Include="Volo.Abp.Autofac" Version="5.1.4" />
     <PackageReference Include="Volo.Abp.Swashbuckle" Version="5.1.4" />

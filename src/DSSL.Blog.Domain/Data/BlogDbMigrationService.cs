@@ -13,7 +13,7 @@ using Volo.Abp.Identity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.TenantManagement;
 
-namespace DSSL.Blog.Data
+namespace Dssl.Blog.Data
 {
     public class BlogDbMigrationService : ITransientDependency
     {

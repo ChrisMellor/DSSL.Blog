@@ -2,7 +2,7 @@
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 public class BlogTestDataSeedContributor : IDataSeedContributor, ITransientDependency
 {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace DSSL.Blog.Data
+namespace Dssl.Blog.Data
 {
     public class NullBlogDbSchemaMigrator : IBlogDbSchemaMigrator, ITransientDependency
     {

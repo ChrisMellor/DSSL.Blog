@@ -1,20 +1,20 @@
-using System.Collections.Generic;
-using System.Globalization;
+using Dssl.Blog.Localization;
+using Dssl.Blog.Web;
+using Dssl.Blog.Web.Menus;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
-using DSSL.Blog.Localization;
-using DSSL.Blog.Web;
-using DSSL.Blog.Web.Menus;
+using System.Collections.Generic;
+using System.Globalization;
 using Volo.Abp.AspNetCore.TestBase;
 using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.Validation.Localization;
 
-namespace DSSL.Blog;
+namespace Dssl.Blog;
 
 [DependsOn(
     typeof(AbpAspNetCoreTestBaseModule),

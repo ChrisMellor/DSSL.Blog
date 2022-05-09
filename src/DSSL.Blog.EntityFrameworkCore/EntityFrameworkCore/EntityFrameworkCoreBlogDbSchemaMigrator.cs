@@ -1,11 +1,11 @@
-﻿using DSSL.Blog.Data;
+﻿using Dssl.Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace DSSL.Blog.EntityFrameworkCore
+namespace Dssl.Blog.EntityFrameworkCore
 {
     public class EntityFrameworkCoreBlogDbSchemaMigrator : IBlogDbSchemaMigrator, ITransientDependency
     {

@@ -1,6 +1,6 @@
 ﻿using Volo.Abp;
 
-namespace DSSL.Blog.Posts
+namespace Dssl.Blog.Posts
 {
     public class PublishedException : BusinessException
     {
