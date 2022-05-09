@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Dssl.Blog.PostTags;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 
@@ -11,21 +13,20 @@ namespace Dssl.Blog.Posts
         public string Message { get; set; }
         public string HeaderImage { get; protected set; }
         public DateTime? PublishDate { get; protected set; }
-        public ICollection<string> Tags { get; protected set; }
+        public virtual ICollection<PostTag> Tags { get; protected set; }
 
         public Post(
             Guid id,
             string title,
             string message,
             string headerImage,
-            bool isPublished,
-            ICollection<string> tags) : base(id)
+            bool isPublished) : base(id)
         {
             Title = Check.NotNullOrWhiteSpace(title, nameof(title));
             Message = Check.NotNullOrWhiteSpace(message, nameof(message));
             HeaderImage = headerImage;
             PublishDate = isPublished ? DateTime.UtcNow : null;
-            Tags = tags;
+            Tags = new Collection<PostTag>();
         }
 
         protected Post() { }

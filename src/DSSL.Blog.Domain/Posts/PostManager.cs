@@ -8,7 +8,7 @@ namespace Dssl.Blog.Posts
     {
         public async Task<Post> CreateAsync(string title, string message, string headerImage, bool isPublished, ICollection<string> tags)
         {
-            return new Post(GuidGenerator.Create(), title, message, headerImage, isPublished, tags);
+            return new Post(GuidGenerator.Create(), title, message, headerImage, isPublished);
         }
 
         public async Task ChangeTitleAsync(Post post, string title)
