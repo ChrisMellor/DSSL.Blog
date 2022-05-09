@@ -1,8 +1,6 @@
-﻿using DSSL.Blog.Comments;
-using DSSL.Blog.Posts;
+﻿using DSSL.Blog.Posts;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
@@ -15,14 +13,12 @@ namespace DSSL.Blog
     public class BlogDataSeederContributor : IDataSeedContributor, ITransientDependency
     {
         private readonly IRepository<Post, Guid> _postRepository;
-        private readonly IRepository<Comment, Guid> _commentRepository;
         private readonly IRepository<IdentityUser, Guid> _userRepository;
         private readonly IGuidGenerator _guidGenerator;
 
-        public BlogDataSeederContributor(IRepository<Post, Guid> postRepository, IRepository<Comment, Guid> commentRepository, IRepository<IdentityUser, Guid> userRepository, IGuidGenerator guidGenerator)
+        public BlogDataSeederContributor(IRepository<Post, Guid> postRepository, IRepository<IdentityUser, Guid> userRepository, IGuidGenerator guidGenerator)
         {
             _postRepository = postRepository;
-            _commentRepository = commentRepository;
             _userRepository = userRepository;
             _guidGenerator = guidGenerator;
         }
@@ -30,30 +26,10 @@ namespace DSSL.Blog
         public async Task SeedAsync(DataSeedContext context)
         {
             var author = await _userRepository.FirstOrDefaultAsync();
-            var posts = await CreatePostsAsync(author.Id);
-
-            foreach (var post in posts)
-            {
-                await CreateCommentsAsync(post);
-            }
+            await CreatePostsAsync(author.Id);
         }
 
-        private async Task CreateCommentsAsync(Post post)
-        {
-            var random = new Random().Next(0, 10);
-            var comments = new List<Comment>();
-
-            for (var i = 0; i < random; i++)
-            {
-                var message = LoremIpsum(1, 25, 1, 4, 2);
-                var comment = new Comment(_guidGenerator.Create(), message, post.Id);
-                comments.Add(comment);
-            }
-
-            await _commentRepository.InsertManyAsync(comments);
-        }
-
-        private async Task<IEnumerable<Post>> CreatePostsAsync(Guid authorId)
+        private async Task CreatePostsAsync(Guid authorId)
         {
             var posts = new List<Post>
             {
@@ -105,38 +81,6 @@ namespace DSSL.Blog
             };
 
             await _postRepository.InsertManyAsync(posts);
-
-            return posts;
-        }
-
-        private static string LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)
-        {
-
-            var words = new[]{"lorem", "ipsum", "dolor", "sit", "amet", "consectetuer",
-                "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod",
-                "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat"};
-
-            var random = new Random();
-            var sentences = random.Next(maxSentences - minSentences)
-                               + minSentences + 1;
-            var wordIndex = random.Next(maxWords - minWords) + minWords + 1;
-
-            var result = new StringBuilder();
-
-            for (var p = 0; p < numParagraphs; p++)
-            {
-                for (var s = 0; s < sentences; s++)
-                {
-                    for (var w = 0; w < wordIndex; w++)
-                    {
-                        if (w > 0) { result.Append(' '); }
-                        result.Append(words[random.Next(words.Length)]);
-                    }
-                    result.Append(". ");
-                }
-            }
-
-            return result.ToString();
         }
     }
 }

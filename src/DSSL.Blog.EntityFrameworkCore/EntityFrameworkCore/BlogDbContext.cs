@@ -1,5 +1,4 @@
-﻿using DSSL.Blog.Comments;
-using DSSL.Blog.Posts;
+﻿using DSSL.Blog.Posts;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -24,7 +23,6 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
     public DbSet<Post> Posts { get; set; }
-    public DbSet<Comment> Comments { get; set; }
 
     #region Entities from the modules
 
@@ -73,6 +71,5 @@ public class BlogDbContext : AbpDbContext<BlogDbContext>, IIdentityDbContext, IT
         /* Configure your own tables/entities inside here */
 
         builder.ConfigurePost();
-        builder.ConfigureComment();
     }
 }
