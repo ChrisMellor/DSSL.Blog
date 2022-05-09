@@ -30,178 +30,179 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 
-namespace DSSL.Blog.Web;
-
-[DependsOn(
-    typeof(BlogHttpApiModule),
-    typeof(BlogApplicationModule),
-    typeof(BlogEntityFrameworkCoreModule),
-    typeof(AbpAutofacModule),
-    typeof(AbpIdentityWebModule),
-    typeof(AbpSettingManagementWebModule),
-    typeof(AbpAccountWebIdentityServerModule),
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-    typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-    typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
-    )]
-public class BlogWebModule : AbpModule
+namespace DSSL.Blog.Web
 {
-    public override void PreConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(BlogHttpApiModule),
+        typeof(BlogApplicationModule),
+        typeof(BlogEntityFrameworkCoreModule),
+        typeof(AbpAutofacModule),
+        typeof(AbpIdentityWebModule),
+        typeof(AbpSettingManagementWebModule),
+        typeof(AbpAccountWebIdentityServerModule),
+        typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
+        typeof(AbpAspNetCoreSerilogModule),
+        typeof(AbpSwashbuckleModule)
+    )]
+    public class BlogWebModule : AbpModule
     {
-        context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
+        public override void PreConfigureServices(ServiceConfigurationContext context)
         {
-            options.AddAssemblyResource(
-                typeof(BlogResource),
-                typeof(BlogDomainModule).Assembly,
-                typeof(BlogDomainSharedModule).Assembly,
-                typeof(BlogApplicationModule).Assembly,
-                typeof(BlogApplicationContractsModule).Assembly,
-                typeof(BlogWebModule).Assembly
-            );
-        });
-    }
+            context.Services.PreConfigure<AbpMvcDataAnnotationsLocalizationOptions>(options =>
+            {
+                options.AddAssemblyResource(
+                    typeof(BlogResource),
+                    typeof(BlogDomainModule).Assembly,
+                    typeof(BlogDomainSharedModule).Assembly,
+                    typeof(BlogApplicationModule).Assembly,
+                    typeof(BlogApplicationContractsModule).Assembly,
+                    typeof(BlogWebModule).Assembly
+                );
+            });
+        }
 
-    public override void ConfigureServices(ServiceConfigurationContext context)
-    {
-        var hostingEnvironment = context.Services.GetHostingEnvironment();
-        var configuration = context.Services.GetConfiguration();
-
-        ConfigureUrls(configuration);
-        ConfigureBundles();
-        ConfigureAuthentication(context, configuration);
-        ConfigureAutoMapper();
-        ConfigureVirtualFileSystem(hostingEnvironment);
-        ConfigureLocalizationServices();
-        ConfigureNavigationServices();
-        ConfigureAutoApiControllers();
-        ConfigureSwaggerServices(context.Services);
-    }
-
-    private void ConfigureUrls(IConfiguration configuration)
-    {
-        Configure<AppUrlOptions>(options =>
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
-        });
-    }
+            var hostingEnvironment = context.Services.GetHostingEnvironment();
+            var configuration = context.Services.GetConfiguration();
 
-    private void ConfigureBundles()
-    {
-        Configure<AbpBundlingOptions>(options =>
+            ConfigureUrls(configuration);
+            ConfigureBundles();
+            ConfigureAuthentication(context, configuration);
+            ConfigureAutoMapper();
+            ConfigureVirtualFileSystem(hostingEnvironment);
+            ConfigureLocalizationServices();
+            ConfigureNavigationServices();
+            ConfigureAutoApiControllers();
+            ConfigureSwaggerServices(context.Services);
+        }
+
+        private void ConfigureUrls(IConfiguration configuration)
         {
-            options.StyleBundles.Configure(
-                BasicThemeBundles.Styles.Global,
-                bundle =>
+            Configure<AppUrlOptions>(options =>
+            {
+                options.Applications["MVC"].RootUrl = configuration["App:SelfUrl"];
+            });
+        }
+
+        private void ConfigureBundles()
+        {
+            Configure<AbpBundlingOptions>(options =>
+            {
+                options.StyleBundles.Configure(
+                    BasicThemeBundles.Styles.Global,
+                    bundle =>
+                    {
+                        bundle.AddFiles("/global-styles.css");
+                    }
+                );
+            });
+        }
+
+        private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
+        {
+            context.Services.AddAuthentication()
+                .AddJwtBearer(options =>
                 {
-                    bundle.AddFiles("/global-styles.css");
+                    options.Authority = configuration["AuthServer:Authority"];
+                    options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
+                    options.Audience = "Blog";
+                });
+        }
+
+        private void ConfigureAutoMapper()
+        {
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<BlogWebModule>();
+            });
+        }
+
+        private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
+        {
+            if (hostingEnvironment.IsDevelopment())
+            {
+                Configure<AbpVirtualFileSystemOptions>(options =>
+                {
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BlogWebModule>(hostingEnvironment.ContentRootPath);
+                });
+            }
+        }
+
+        private void ConfigureLocalizationServices()
+        {
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
+            });
+        }
+
+        private void ConfigureNavigationServices()
+        {
+            Configure<AbpNavigationOptions>(options =>
+            {
+                options.MenuContributors.Add(new BlogMenuContributor());
+            });
+        }
+
+        private void ConfigureAutoApiControllers()
+        {
+            Configure<AbpAspNetCoreMvcOptions>(options =>
+            {
+                options.ConventionalControllers.Create(typeof(BlogApplicationModule).Assembly);
+            });
+        }
+
+        private void ConfigureSwaggerServices(IServiceCollection services)
+        {
+            services.AddAbpSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog API", Version = "v1" });
+                    options.DocInclusionPredicate((docName, description) => true);
+                    options.CustomSchemaIds(type => type.FullName);
                 }
             );
-        });
-    }
-
-    private void ConfigureAuthentication(ServiceConfigurationContext context, IConfiguration configuration)
-    {
-        context.Services.AddAuthentication()
-            .AddJwtBearer(options =>
-            {
-                options.Authority = configuration["AuthServer:Authority"];
-                options.RequireHttpsMetadata = Convert.ToBoolean(configuration["AuthServer:RequireHttpsMetadata"]);
-                options.Audience = "Blog";
-            });
-    }
-
-    private void ConfigureAutoMapper()
-    {
-        Configure<AbpAutoMapperOptions>(options =>
-        {
-            options.AddMaps<BlogWebModule>();
-        });
-    }
-
-    private void ConfigureVirtualFileSystem(IWebHostEnvironment hostingEnvironment)
-    {
-        if (hostingEnvironment.IsDevelopment())
-        {
-            Configure<AbpVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<BlogDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Domain"));
-                options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application.Contracts"));
-                options.FileSets.ReplaceEmbeddedByPhysical<BlogApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}DSSL.Blog.Application"));
-                options.FileSets.ReplaceEmbeddedByPhysical<BlogWebModule>(hostingEnvironment.ContentRootPath);
-            });
         }
-    }
 
-    private void ConfigureLocalizationServices()
-    {
-        Configure<AbpLocalizationOptions>(options =>
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
         {
-            options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
-        });
-    }
+            var app = context.GetApplicationBuilder();
+            var env = context.GetEnvironment();
 
-    private void ConfigureNavigationServices()
-    {
-        Configure<AbpNavigationOptions>(options =>
-        {
-            options.MenuContributors.Add(new BlogMenuContributor());
-        });
-    }
-
-    private void ConfigureAutoApiControllers()
-    {
-        Configure<AbpAspNetCoreMvcOptions>(options =>
-        {
-            options.ConventionalControllers.Create(typeof(BlogApplicationModule).Assembly);
-        });
-    }
-
-    private void ConfigureSwaggerServices(IServiceCollection services)
-    {
-        services.AddAbpSwaggerGen(
-            options =>
+            if (env.IsDevelopment())
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Blog API", Version = "v1" });
-                options.DocInclusionPredicate((docName, description) => true);
-                options.CustomSchemaIds(type => type.FullName);
+                app.UseDeveloperExceptionPage();
             }
-        );
-    }
 
-    public override void OnApplicationInitialization(ApplicationInitializationContext context)
-    {
-        var app = context.GetApplicationBuilder();
-        var env = context.GetEnvironment();
+            app.UseAbpRequestLocalization();
 
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
+            if (!env.IsDevelopment())
+            {
+                app.UseErrorPage();
+            }
+
+            app.UseCorrelationId();
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseJwtTokenMiddleware();
+            app.UseUnitOfWork();
+            app.UseIdentityServer();
+            app.UseAuthorization();
+            app.UseSwagger();
+            app.UseAbpSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog API");
+            });
+            app.UseAuditing();
+            app.UseAbpSerilogEnrichers();
+            app.UseConfiguredEndpoints();
         }
-
-        app.UseAbpRequestLocalization();
-
-        if (!env.IsDevelopment())
-        {
-            app.UseErrorPage();
-        }
-
-        app.UseCorrelationId();
-        app.UseStaticFiles();
-        app.UseRouting();
-        app.UseAuthentication();
-        app.UseJwtTokenMiddleware();
-        app.UseUnitOfWork();
-        app.UseIdentityServer();
-        app.UseAuthorization();
-        app.UseSwagger();
-        app.UseAbpSwaggerUI(options =>
-        {
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Blog API");
-        });
-        app.UseAuditing();
-        app.UseAbpSerilogEnrichers();
-        app.UseConfiguredEndpoints();
     }
 }

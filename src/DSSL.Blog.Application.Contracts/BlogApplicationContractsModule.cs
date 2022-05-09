@@ -7,22 +7,24 @@ using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace DSSL.Blog;
-
-[DependsOn(
-    typeof(BlogDomainSharedModule),
-    typeof(AbpAccountApplicationContractsModule),
-    typeof(AbpFeatureManagementApplicationContractsModule),
-    typeof(AbpIdentityApplicationContractsModule),
-    typeof(AbpPermissionManagementApplicationContractsModule),
-    typeof(AbpSettingManagementApplicationContractsModule),
-    typeof(AbpTenantManagementApplicationContractsModule),
-    typeof(AbpObjectExtendingModule)
-)]
-public class BlogApplicationContractsModule : AbpModule
+namespace DSSL.Blog
 {
-    public override void PreConfigureServices(ServiceConfigurationContext context)
+
+    [DependsOn(
+        typeof(BlogDomainSharedModule),
+        typeof(AbpAccountApplicationContractsModule),
+        typeof(AbpFeatureManagementApplicationContractsModule),
+        typeof(AbpIdentityApplicationContractsModule),
+        typeof(AbpPermissionManagementApplicationContractsModule),
+        typeof(AbpSettingManagementApplicationContractsModule),
+        typeof(AbpTenantManagementApplicationContractsModule),
+        typeof(AbpObjectExtendingModule)
+    )]
+    public class BlogApplicationContractsModule : AbpModule
     {
-        BlogDtoExtensions.Configure();
+        public override void PreConfigureServices(ServiceConfigurationContext context)
+        {
+            BlogDtoExtensions.Configure();
+        }
     }
 }

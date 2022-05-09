@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DSSL.Blog.Localization;
+﻿using DSSL.Blog.Localization;
 using Volo.Abp.Application.Services;
 
-namespace DSSL.Blog;
-
-/* Inherit your application services from this class.
- */
-public abstract class BlogAppService : ApplicationService
+namespace DSSL.Blog
 {
-    protected BlogAppService()
+    public abstract class BlogAppService : ApplicationService
     {
-        LocalizationResource = typeof(BlogResource);
+        protected BlogAppService()
+        {
+            LocalizationResource = typeof(BlogResource);
+        }
     }
 }

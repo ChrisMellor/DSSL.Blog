@@ -1,14 +1,13 @@
 ﻿using DSSL.Blog.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace DSSL.Blog.Web.Pages;
-
-/* Inherit your PageModel classes from this class.
- */
-public abstract class BlogPageModel : AbpPageModel
+namespace DSSL.Blog.Web.Pages
 {
-    protected BlogPageModel()
+    public abstract class BlogPageModel : AbpPageModel
     {
-        LocalizationResourceType = typeof(BlogResource);
+        protected BlogPageModel()
+        {
+            LocalizationResourceType = typeof(BlogResource);
+        }
     }
 }

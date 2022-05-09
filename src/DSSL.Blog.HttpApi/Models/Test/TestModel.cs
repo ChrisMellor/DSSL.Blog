@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace DSSL.Blog.Models.Test;
-
-public class TestModel
+namespace DSSL.Blog.Models.Test
 {
-    public string Name { get; set; }
+    public class TestModel
+    {
+        public string Name { get; set; }
 
-    public DateTime BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
+    }
 }

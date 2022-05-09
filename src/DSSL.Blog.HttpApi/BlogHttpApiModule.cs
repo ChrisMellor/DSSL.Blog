@@ -1,5 +1,5 @@
-﻿using Localization.Resources.AbpUi;
-using DSSL.Blog.Localization;
+﻿using DSSL.Blog.Localization;
+using Localization.Resources.AbpUi;
 using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -9,33 +9,34 @@ using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 
-namespace DSSL.Blog;
-
-[DependsOn(
-    typeof(BlogApplicationContractsModule),
-    typeof(AbpAccountHttpApiModule),
-    typeof(AbpIdentityHttpApiModule),
-    typeof(AbpPermissionManagementHttpApiModule),
-    typeof(AbpTenantManagementHttpApiModule),
-    typeof(AbpFeatureManagementHttpApiModule),
-    typeof(AbpSettingManagementHttpApiModule)
-    )]
-public class BlogHttpApiModule : AbpModule
+namespace DSSL.Blog
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(BlogApplicationContractsModule),
+        typeof(AbpAccountHttpApiModule),
+        typeof(AbpIdentityHttpApiModule),
+        typeof(AbpPermissionManagementHttpApiModule),
+        typeof(AbpTenantManagementHttpApiModule),
+        typeof(AbpFeatureManagementHttpApiModule),
+        typeof(AbpSettingManagementHttpApiModule)
+    )]
+    public class BlogHttpApiModule : AbpModule
     {
-        ConfigureLocalization();
-    }
-
-    private void ConfigureLocalization()
-    {
-        Configure<AbpLocalizationOptions>(options =>
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            options.Resources
-                .Get<BlogResource>()
-                .AddBaseTypes(
-                    typeof(AbpUiResource)
-                );
-        });
+            ConfigureLocalization();
+        }
+
+        private void ConfigureLocalization()
+        {
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                    .Get<BlogResource>()
+                    .AddBaseTypes(
+                        typeof(AbpUiResource)
+                    );
+            });
+        }
     }
 }

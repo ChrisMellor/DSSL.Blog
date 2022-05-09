@@ -11,26 +11,27 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.IdentityServer;
 using Volo.Abp.SettingManagement;
 
-namespace DSSL.Blog;
-
-[DependsOn(
-    typeof(BlogDomainSharedModule),
-    typeof(AbpAuditLoggingDomainModule),
-    typeof(AbpBackgroundJobsDomainModule),
-    typeof(AbpFeatureManagementDomainModule),
-    typeof(AbpIdentityDomainModule),
-    typeof(AbpPermissionManagementDomainIdentityModule),
-    typeof(AbpIdentityServerDomainModule),
-    typeof(AbpPermissionManagementDomainIdentityServerModule),
-    typeof(AbpSettingManagementDomainModule),
-    typeof(AbpEmailingModule)
-)]
-public class BlogDomainModule : AbpModule
+namespace DSSL.Blog
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(BlogDomainSharedModule),
+        typeof(AbpAuditLoggingDomainModule),
+        typeof(AbpBackgroundJobsDomainModule),
+        typeof(AbpFeatureManagementDomainModule),
+        typeof(AbpIdentityDomainModule),
+        typeof(AbpPermissionManagementDomainIdentityModule),
+        typeof(AbpIdentityServerDomainModule),
+        typeof(AbpPermissionManagementDomainIdentityServerModule),
+        typeof(AbpSettingManagementDomainModule),
+        typeof(AbpEmailingModule)
+    )]
+    public class BlogDomainModule : AbpModule
     {
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
 #if DEBUG
-        context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
+            context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
 #endif
+        }
     }
 }

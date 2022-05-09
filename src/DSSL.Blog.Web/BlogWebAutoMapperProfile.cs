@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using DSSL.Blog.Posts;
 
-namespace DSSL.Blog.Web;
-
-public class BlogWebAutoMapperProfile : Profile
+namespace DSSL.Blog.Web
 {
-    public BlogWebAutoMapperProfile()
+    public class BlogWebAutoMapperProfile : Profile
     {
-        CreateMap<PostDto, PostUpdateDto>();
+        public BlogWebAutoMapperProfile()
+        {
+            CreateMap<PostDto, PostUpdateDto>();
+        }
     }
 }

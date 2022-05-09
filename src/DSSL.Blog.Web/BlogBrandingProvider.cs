@@ -1,10 +1,11 @@
 ﻿using Volo.Abp.DependencyInjection;
 using Volo.Abp.Ui.Branding;
 
-namespace DSSL.Blog.Web;
-
-[Dependency(ReplaceServices = true)]
-public class BlogBrandingProvider : DefaultBrandingProvider
+namespace DSSL.Blog.Web
 {
-    public override string AppName => "Blog";
+    [Dependency(ReplaceServices = true)]
+    public class BlogBrandingProvider : DefaultBrandingProvider
+    {
+        public override string AppName => "Blog";
+    }
 }

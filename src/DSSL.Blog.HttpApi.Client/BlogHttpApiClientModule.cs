@@ -4,35 +4,31 @@ using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
-using Volo.Abp.TenantManagement;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.TenantManagement;
 using Volo.Abp.VirtualFileSystem;
 
-namespace DSSL.Blog;
-
-[DependsOn(
-    typeof(BlogApplicationContractsModule),
-    typeof(AbpAccountHttpApiClientModule),
-    typeof(AbpIdentityHttpApiClientModule),
-    typeof(AbpPermissionManagementHttpApiClientModule),
-    typeof(AbpTenantManagementHttpApiClientModule),
-    typeof(AbpFeatureManagementHttpApiClientModule),
-    typeof(AbpSettingManagementHttpApiClientModule)
-)]
-public class BlogHttpApiClientModule : AbpModule
+namespace DSSL.Blog
 {
-    public const string RemoteServiceName = "Default";
-
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(BlogApplicationContractsModule),
+        typeof(AbpAccountHttpApiClientModule),
+        typeof(AbpIdentityHttpApiClientModule),
+        typeof(AbpPermissionManagementHttpApiClientModule),
+        typeof(AbpTenantManagementHttpApiClientModule),
+        typeof(AbpFeatureManagementHttpApiClientModule),
+        typeof(AbpSettingManagementHttpApiClientModule)
+    )]
+    public class BlogHttpApiClientModule : AbpModule
     {
-        context.Services.AddHttpClientProxies(
-            typeof(BlogApplicationContractsModule).Assembly,
-            RemoteServiceName
-        );
-
-        Configure<AbpVirtualFileSystemOptions>(options =>
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            options.FileSets.AddEmbedded<BlogHttpApiClientModule>();
-        });
+            context.Services.AddHttpClientProxies(typeof(BlogApplicationContractsModule).Assembly);
+
+            Configure<AbpVirtualFileSystemOptions>(options =>
+            {
+                options.FileSets.AddEmbedded<BlogHttpApiClientModule>();
+            });
+        }
     }
 }

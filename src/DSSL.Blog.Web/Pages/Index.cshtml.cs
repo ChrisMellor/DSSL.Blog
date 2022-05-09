@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DSSL.Blog.Web.Pages;
-
-public class IndexModel : BlogPageModel
+namespace DSSL.Blog.Web.Pages
 {
-    private readonly PostAppService _postAppService;
-    public IReadOnlyList<PostDto> Posts { get; set; }
-
-    public IndexModel(PostAppService postAppService)
+    public class IndexModel : BlogPageModel
     {
-        _postAppService = postAppService;
-    }
+        private readonly PostAppService _postAppService;
+        public IReadOnlyList<PostDto> Posts { get; set; }
 
-    public async Task OnGetAsync()
-    {
-        Posts = await _postAppService.GetAllAsync();
+        public IndexModel(PostAppService postAppService)
+        {
+            _postAppService = postAppService;
+        }
+
+        public async Task OnGetAsync()
+        {
+            Posts = await _postAppService.GetAllAsync();
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace DSSL.Blog.Data;
-
-public interface IBlogDbSchemaMigrator
+namespace DSSL.Blog.Data
 {
-    Task MigrateAsync();
+    public interface IBlogDbSchemaMigrator
+    {
+        Task MigrateAsync();
+    }
 }

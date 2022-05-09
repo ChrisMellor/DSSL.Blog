@@ -1,15 +1,13 @@
 ﻿using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace DSSL.Blog.Data;
-
-/* This is used if database provider does't define
- * IBlogDbSchemaMigrator implementation.
- */
-public class NullBlogDbSchemaMigrator : IBlogDbSchemaMigrator, ITransientDependency
+namespace DSSL.Blog.Data
 {
-    public Task MigrateAsync()
+    public class NullBlogDbSchemaMigrator : IBlogDbSchemaMigrator, ITransientDependency
     {
-        return Task.CompletedTask;
+        public Task MigrateAsync()
+        {
+            return Task.CompletedTask;
+        }
     }
 }

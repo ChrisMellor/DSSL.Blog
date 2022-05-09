@@ -1,14 +1,13 @@
 ﻿using DSSL.Blog.Localization;
 using Volo.Abp.AspNetCore.Mvc;
 
-namespace DSSL.Blog.Controllers;
-
-/* Inherit your controllers from this class.
- */
-public abstract class BlogController : AbpControllerBase
+namespace DSSL.Blog.Controllers
 {
-    protected BlogController()
+    public abstract class BlogController : AbpControllerBase
     {
-        LocalizationResource = typeof(BlogResource);
+        protected BlogController()
+        {
+            LocalizationResource = typeof(BlogResource);
+        }
     }
 }

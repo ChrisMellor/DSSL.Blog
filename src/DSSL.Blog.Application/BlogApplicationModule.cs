@@ -6,24 +6,25 @@ using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
 
-namespace DSSL.Blog;
-
-[DependsOn(
-    typeof(BlogDomainModule),
-    typeof(AbpAccountApplicationModule),
-    typeof(BlogApplicationContractsModule),
-    typeof(AbpIdentityApplicationModule),
-    typeof(AbpPermissionManagementApplicationModule),
-    typeof(AbpFeatureManagementApplicationModule),
-    typeof(AbpSettingManagementApplicationModule)
-    )]
-public class BlogApplicationModule : AbpModule
+namespace DSSL.Blog
 {
-    public override void ConfigureServices(ServiceConfigurationContext context)
+    [DependsOn(
+        typeof(BlogDomainModule),
+        typeof(AbpAccountApplicationModule),
+        typeof(BlogApplicationContractsModule),
+        typeof(AbpIdentityApplicationModule),
+        typeof(AbpPermissionManagementApplicationModule),
+        typeof(AbpFeatureManagementApplicationModule),
+        typeof(AbpSettingManagementApplicationModule)
+    )]
+    public class BlogApplicationModule : AbpModule
     {
-        Configure<AbpAutoMapperOptions>(options =>
+        public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            options.AddMaps<BlogApplicationModule>();
-        });
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<BlogApplicationModule>();
+            });
+        }
     }
 }

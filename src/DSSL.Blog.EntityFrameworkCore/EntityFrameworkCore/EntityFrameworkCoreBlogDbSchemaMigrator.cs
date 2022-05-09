@@ -1,34 +1,28 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using DSSL.Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using DSSL.Blog.Data;
+using System;
+using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 
-namespace DSSL.Blog.EntityFrameworkCore;
-
-public class EntityFrameworkCoreBlogDbSchemaMigrator
-    : IBlogDbSchemaMigrator, ITransientDependency
+namespace DSSL.Blog.EntityFrameworkCore
 {
-    private readonly IServiceProvider _serviceProvider;
-
-    public EntityFrameworkCoreBlogDbSchemaMigrator(
-        IServiceProvider serviceProvider)
+    public class EntityFrameworkCoreBlogDbSchemaMigrator : IBlogDbSchemaMigrator, ITransientDependency
     {
-        _serviceProvider = serviceProvider;
-    }
+        private readonly IServiceProvider _serviceProvider;
 
-    public async Task MigrateAsync()
-    {
-        /* We intentionally resolving the BlogDbContext
-         * from IServiceProvider (instead of directly injecting it)
-         * to properly get the connection string of the current tenant in the
-         * current scope.
-         */
+        public EntityFrameworkCoreBlogDbSchemaMigrator(
+            IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
-        await _serviceProvider
-            .GetRequiredService<BlogDbContext>()
-            .Database
-            .MigrateAsync();
+        public async Task MigrateAsync()
+        {
+            await _serviceProvider
+                .GetRequiredService<BlogDbContext>()
+                .Database
+                .MigrateAsync();
+        }
     }
 }
