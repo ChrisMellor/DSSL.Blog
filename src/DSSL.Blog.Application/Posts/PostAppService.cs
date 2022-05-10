@@ -57,10 +57,10 @@ namespace Dssl.Blog.Posts
             var posts = await _postRepository.GetPosts();
             var postDtos = new List<PostDto>(ObjectMapper.Map<ICollection<Post>, ICollection<PostDto>>(posts));
 
-            foreach (var postDto in postDtos)
-            {
-                postDto.Tags = await _tagRepository.GetTagsAsync(postDto.Id);
-            }
+            //foreach (var postDto in postDtos)
+            //{
+            //    postDto.Tags = await _tagRepository.GetTagsAsync(postDto.Id);
+            //}
 
             return postDtos;
         }
