@@ -1,24 +1,23 @@
-﻿using System;
+﻿using Dssl.Blog.Tags;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp;
 using Volo.Abp.Application.Services;
-using Volo.Abp.Data;
-using Volo.Abp.Domain.Repositories;
 
 namespace Dssl.Blog.Posts
 {
     public class PostAppService : ApplicationService
     {
-        private readonly IRepository<Post, Guid> _postRepository;
+        private readonly IPostRepository _postRepository;
+        private readonly ITagRepository _tagRepository;
         private readonly PostManager _postManager;
-        private readonly IDataFilter _dataFilter;
 
-        public PostAppService(IRepository<Post, Guid> postRepository, PostManager postManager, IDataFilter dataFilter)
+        public PostAppService(IPostRepository postRepository, ITagRepository tagRepository, PostManager postManager)
         {
             _postRepository = postRepository;
+            _tagRepository = tagRepository;
             _postManager = postManager;
-            _dataFilter = dataFilter;
         }
 
         public async Task<PostDto> CreateAsync(CreatePostDto input)
@@ -36,7 +35,7 @@ namespace Dssl.Blog.Posts
 
             await _postManager.ChangeTitleAsync(post, input.Title);
             await _postManager.ChangeMessageAsync(post, input.Message);
-            await _postManager.PublishAsync(post, input.IsPublished);
+            await _postManager.PublishAsync(post, input.HasPublished);
             await _postManager.ChangeHeaderImageAsync(post, input.HeaderImage);
 
             await _postRepository.UpdateAsync(post);
@@ -55,8 +54,13 @@ namespace Dssl.Blog.Posts
 
         public async Task<List<PostDto>> GetAllAsync()
         {
-            var posts = await _postRepository.GetListAsync(x => x.PublishDate.HasValue);
-            var postDtos = new List<PostDto>(ObjectMapper.Map<List<Post>, List<PostDto>>(posts));
+            var posts = await _postRepository.GetPosts();
+            var postDtos = new List<PostDto>(ObjectMapper.Map<ICollection<Post>, ICollection<PostDto>>(posts));
+
+            foreach (var postDto in postDtos)
+            {
+                postDto.Tags = await _tagRepository.GetTagsAsync(postDto.Id);
+            }
 
             return postDtos;
         }
@@ -68,9 +72,11 @@ namespace Dssl.Blog.Posts
 
         public async Task RestoreAsync(Guid id)
         {
-            using (_dataFilter.Disable<ISoftDelete>())
+            using (DataFilter.Disable<ISoftDelete>())
             {
                 var post = await _postRepository.GetAsync(id);
+                await _postManager.RestoreAsync(post);
+                await _postRepository.UpdateAsync(post);
             }
         }
     }

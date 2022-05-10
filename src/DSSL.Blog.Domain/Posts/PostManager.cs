@@ -48,5 +48,15 @@ namespace Dssl.Blog.Posts
 
             post.SetHeaderImage(headerImage);
         }
+
+        public async Task RestoreAsync(Post post)
+        {
+            if (!post.IsDeleted)
+            {
+                return;
+            }
+
+
+        }
     }
 }

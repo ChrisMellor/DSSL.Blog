@@ -7,7 +7,7 @@ namespace Dssl.Blog.Tags
 {
     public interface ITagRepository : IBasicRepository<Tag, Guid>
     {
-        Task<ICollection<Tag>> GetTagsAsync();
+        Task<ICollection<TagDto>> GetTagsAsync(Guid postId);
         Task<Tag> GetByNameAsync(string name);
     }
 }

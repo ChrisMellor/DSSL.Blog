@@ -69,5 +69,12 @@ namespace Dssl.Blog.Posts
         {
             Tags.RemoveAll(x => x.TagId == tagId);
         }
+
+        internal void Restore()
+        {
+            IsDeleted = false;
+            DeletionTime = null;
+            DeleterId = null;
+        }
     }
 }

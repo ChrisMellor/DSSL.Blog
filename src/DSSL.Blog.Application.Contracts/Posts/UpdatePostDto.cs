@@ -9,6 +9,6 @@ namespace Dssl.Blog.Posts
         public string Title { get; set; }
         public string Message { get; set; }
         public string HeaderImage { get; set; }
-        private bool HasPublished { get; set; }
+        public bool HasPublished { get; set; }
     }
 }

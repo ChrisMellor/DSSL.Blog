@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dssl.Blog.Application.Contracts\Dssl.Blog.Application.Contracts.csproj" />
     <ProjectReference Include="..\Dssl.Blog.Domain.Shared\Dssl.Blog.Domain.Shared.csproj" />
   </ItemGroup>
 
