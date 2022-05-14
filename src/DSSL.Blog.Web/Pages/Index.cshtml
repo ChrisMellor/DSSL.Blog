@@ -10,17 +10,18 @@
 @inject ICurrentUser _currentUser
 
 @section styles {
-<abp-style src="/Pages/Index.css" />
+    <abp-style src="/Pages/Index.css" />
 }
 
-@section scripts {
-<abp-script src="/Pages/Index.js" />
+    @section scripts {
+    <abp-script src="/Pages/Index.js" />
 }
-<abp-container>
-    <div class="card-deck">
-        @foreach (var post in Model.Posts)
+
+    <abp-container>
+        <div class="card-deck">
+            @foreach (var post in Model.Posts)
         {
-            <abp-card class="mb-3">
+            <abp-card class="mt-3 mb-4">
                 <abp-card-header>
                     <abp-row>
                         <img abp-card-image="Top" src="data:image/jpg;base64,@post.HeaderImage" alt="Image Header for @post.Title" />
