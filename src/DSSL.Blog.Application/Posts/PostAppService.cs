@@ -54,7 +54,7 @@ namespace Dssl.Blog.Posts
 
         public async Task<List<PostDto>> GetAllAsync()
         {
-            var posts = await _postRepository.GetPosts();
+            var posts = await _postRepository.GetPostsAsync();
             var postDtos = new List<PostDto>(ObjectMapper.Map<ICollection<Post>, ICollection<PostDto>>(posts));
 
             //foreach (var postDto in postDtos)
