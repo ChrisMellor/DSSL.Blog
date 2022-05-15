@@ -30,6 +30,10 @@
                 <abp-card-body>
                     <abp-card-title>@post.Title</abp-card-title>
                     <abp-card-text>@post.Message</abp-card-text>
+                    @foreach (var tag in post.Tags)
+                    {
+                        <span class="badge rounded-pill text-bg-primary">@tag.Name</span>
+                    }
                 </abp-card-body>
                 <abp-card-footer>
                     <abp-card-text class="text-muted">Published on @post.PublishDate</abp-card-text>

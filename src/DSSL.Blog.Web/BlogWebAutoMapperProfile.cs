@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Dssl.Blog.Posts;
+using Dssl.Blog.Tags;
 
 namespace Dssl.Blog.Web
 {
@@ -8,6 +9,7 @@ namespace Dssl.Blog.Web
         public BlogWebAutoMapperProfile()
         {
             CreateMap<PostDto, UpdatePostDto>();
+            CreateMap<Tag, TagDto>();
         }
     }
 }

@@ -1,90 +1,33 @@
-﻿using System;
+﻿using Dssl.Blog.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 
 namespace Dssl.Blog.Tags
 {
-    public class TagRepository : ITagRepository
+    public class TagRepository : EfCoreRepository<BlogDbContext, Tag, Guid>, ITagRepository
     {
-        public async Task<List<Tag>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = new CancellationToken())
+        public TagRepository(Volo.Abp.EntityFrameworkCore.IDbContextProvider<BlogDbContext> dbContextProvider) : base(dbContextProvider) { }
+
+        public async Task<Tag> GetByNameAsync(string name, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var tagDbSet = await GetDbSetAsync();
+
+            var tags = await tagDbSet.SingleOrDefaultAsync(x => x.Name == name, GetCancellationToken(cancellationToken));
+
+            return tags;
         }
 
-        public async Task<long> GetCountAsync(CancellationToken cancellationToken = new CancellationToken())
+        public async Task<ICollection<Tag>> GetTagsAsync(Guid postId, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
-        }
+            var tagDbSet = await GetDbSetAsync();
 
-        public async Task<List<Tag>> GetPagedListAsync(int skipCount, int maxResultCount, string sorting, bool includeDetails = false,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
+            var tags = await tagDbSet.ToListAsync(GetCancellationToken(cancellationToken));
 
-        public async Task<Tag> InsertAsync(Tag entity, bool autoSave = false, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task InsertManyAsync(IEnumerable<Tag> entities, bool autoSave = false,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Tag> UpdateAsync(Tag entity, bool autoSave = false, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task UpdateManyAsync(IEnumerable<Tag> entities, bool autoSave = false,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteAsync(Tag entity, bool autoSave = false, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteManyAsync(IEnumerable<Tag> entities, bool autoSave = false,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Tag> GetAsync(Guid id, bool includeDetails = true, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Tag> FindAsync(Guid id, bool includeDetails = true, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteAsync(Guid id, bool autoSave = false, CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task DeleteManyAsync(IEnumerable<Guid> ids, bool autoSave = false,
-            CancellationToken cancellationToken = new CancellationToken())
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ICollection<TagDto>> GetTagsAsync(Guid postId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<Tag> GetByNameAsync(string name)
-        {
-            throw new NotImplementedException();
+            return tags;
         }
     }
 }
